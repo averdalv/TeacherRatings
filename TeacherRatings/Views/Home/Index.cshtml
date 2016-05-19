@@ -1,0 +1,11 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul>
+    @foreach (var t in ViewBag.Teachers)
+    {
+        <li>Имя: @t.Name</li>
+    }
+</ul>
