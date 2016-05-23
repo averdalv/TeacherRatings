@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Value</title>
+</head>
+<body>
+    <div> 
+        @{
+            //Тут надо зарендерить подогнать чтобы было симпатично. а пока тест
+        }
+        @using (Html.BeginForm())
+        {
+            <p> 1 :   @Html.RadioButton("score", "1"); </p>
+            <p> 2 :   @Html.RadioButton("score", "2"); </p>
+            <p> 3 :   @Html.RadioButton("score", "3"); </p>
+            <p> 4 :   @Html.RadioButton("score", "4"); </p>
+            <p> 5 :   @Html.RadioButton("score", "5"); </p>
+            
+            <input type="submit" value="Добавить" />
+        }
+
+
+</div>
+</body>
+</html>
