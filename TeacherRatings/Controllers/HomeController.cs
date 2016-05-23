@@ -16,5 +16,10 @@ namespace TeacherRatings.Controllers
             ViewBag.Teachers = teach;
             return View();
         }
+
+        public ActionResult Teachers()
+        {
+            return View();
+        }
     }
 }
