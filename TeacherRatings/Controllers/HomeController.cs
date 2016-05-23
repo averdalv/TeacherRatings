@@ -11,9 +11,11 @@ namespace TeacherRatings.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var context = new DataContext();
-            var teach = context.Teachers;
-            ViewBag.Teachers = teach;
+            return View();
+        }
+
+        public ActionResult Teachers()
+        {
             return View();
         }
     }
