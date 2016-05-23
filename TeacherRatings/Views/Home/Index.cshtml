@@ -1,4 +1,12 @@
-﻿
-@{
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<ul>
+    @foreach (var t in ViewBag.Teachers)
+    {
+        <li>Имя: @t.Name   Фамилия : @t.LastName </li>
+    }
+    @Html.ActionLink("Форма добавления", "Add", "AddTeacher")
+    <!--<p><a href="Views/Home/Add.cshtml">1</a></p> -->
+</ul>
