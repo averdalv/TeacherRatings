@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,9 +10,9 @@
     <title>Value</title>
 </head>
 <body>
-    <div> 
+    <div>
         @{
-            //Тут надо зарендерить подогнать чтобы было симпатично. а пока тест
+    //Тут надо зарендерить подогнать чтобы было симпатично. а пока тест
         }
         @using (Html.BeginForm())
         {
@@ -22,11 +21,11 @@
             <p> 3 :   @Html.RadioButton("score", "3"); </p>
             <p> 4 :   @Html.RadioButton("score", "4"); </p>
             <p> 5 :   @Html.RadioButton("score", "5"); </p>
-            
+
             <input type="submit" value="Добавить" />
         }
 
 
-</div>
+    </div>
 </body>
 </html>

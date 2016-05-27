@@ -9,11 +9,11 @@
     {
         <li>Имя: @t.Name   Фамилия : @t.LastName </li>
     }
-    @Html.ActionLink("Форма добавления", "Add", "AddTeacher")
+    @Html.ActionLink("Форма добавления", "Add", "Teacher")
 
     <!--<p><a href="Views/Home/Add.cshtml">1</a></p> -->
 </ul>
-@Html.ActionLink("Оценить преподователя с id = 1", "Value", "Value", new { id = 1 }, null);
+@Html.ActionLink("Оценить преподователя с id = 1", "Value", "Teacher", new { id = 1 }, null);
 
 
     @{

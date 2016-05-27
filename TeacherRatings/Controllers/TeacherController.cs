@@ -7,7 +7,7 @@ using TeacherRatings.Models;
 
 namespace TeacherRatings.Controllers
 {
-    public class AddTeacherController : Controller
+    public class TeacherController : Controller
     {
         [HttpGet]
         public ActionResult Add()
@@ -41,9 +41,18 @@ namespace TeacherRatings.Controllers
             return "DYAKUYU";
         }
 
-        //public ActionResult Thanks()
-        //{
-        //    return View();
-        //}
+        //Передаем конкретного препода и смотрим краткую инфу по ему и заполняем пердметы 
+        [HttpGet]
+        public ActionResult Value(int id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Value(string score)
+        {
+            //Получили оценочку. Потом много оценочек
+            return RedirectToAction("Index", "Home");
+        }
 	}
 }
