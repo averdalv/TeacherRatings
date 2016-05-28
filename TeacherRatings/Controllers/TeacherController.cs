@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TeacherRatings.Models;
+using TeacherRatings.Math;
+using TeacherRatings.HelperClasses;
 
 namespace TeacherRatings.Controllers
 {
@@ -43,15 +45,72 @@ namespace TeacherRatings.Controllers
 
         //Передаем конкретного препода и смотрим краткую инфу по ему и заполняем пердметы 
         [HttpGet]
-        public ActionResult Value(int id)
-        {
-            return View();
+        public ActionResult Value(int teacherId, int subjectId)
+        {  
+
+          var context = new DataContext();
+
+            //TeacherSubject tc = new TeacherSubject();
+            //tc.TeacherId = 1;
+            //tc.SubjectId = 1;
+
+            //Criteria cr = new Criteria();
+            //cr.Accessibility = "1";
+            //cr.ClarityImportance = "4";
+            //cr.CommunicationDisciplines = "1";
+            //cr.ImproveMySkills = "5";
+            //cr.Interest = "1";
+            //cr.ObjectivityAssessment = "5";
+            //cr.Preparedness = "1";
+            //cr.Ratio = "4";
+            //cr.Insistence = "4";
+            //cr.Visit = "5";
+            //cr.Enthusiasm = "1";
+            //cr.Examples = "5";
+           // cr.TeacherSubject = tc;
+
+           // context.TeacherSubjects.Add(tc);
+           // context.Criterias.Add(cr);
+           // context.SaveChanges();
+
+
+
+           // context.Criterias.Add(cr);
+          //  context.SaveChanges();
+            //Оценим предмет с ад = 1
+            //var criteria = (from el in context.TeacherSubjects
+            //                where (el.TeacherId == teacherId && el.SubjectId == 1)
+            //                select el.Criteria);
+
+
+            //Ne Ok. Потом переделаю. Для дебага пойдет / В базе будет потом
+            //List<string> list = new List<string>();
+            ViewBag.Criterias = new List<string>();
+            ViewBag.Criterias.Add("Підготовленість викладача та рівень володіння матеріалом|Preparedness");
+            ViewBag.Criterias.Add("Цікавість викладання матеріалу|Interest");
+            ViewBag.Criterias.Add("Доступність та зрозумілість представлення матеріалу|Accessibility");
+            ViewBag.Criterias.Add("Вдалість підбору викладачем прикладів/задач|Examples");
+            ViewBag.Criterias.Add("Ентузіазм викладача при подачі матеріалу|Enthusiasm");
+            ViewBag.Criterias.Add("Зрозумілість значення дисципліни для моєї спеціальності|ClarityImportance");
+            ViewBag.Criterias.Add("Зрозумілість зв’язку дисципліни з іншими дисциплінами моєї спеціальності|CommunicationDisciplines");
+            ViewBag.Criterias.Add("Наскільки пари даного викладача підвищують мою кваліфікацію в даній дисципліні|ImproveMySkills");
+            ViewBag.Criterias.Add("Ставлення викладача до студентів|Ratio");
+            ViewBag.Criterias.Add("Вимогливість викладача|Insistence");
+            ViewBag.Criterias.Add("Об’єктивність оцінювання|ObjectivityAssessment");
+            ViewBag.Criterias.Add("Відвідування мною пар з даної дисципліни|Visit");
+
+            CriteriaReturn crRet = new CriteriaReturn();
+            crRet.teacherId = teacherId;
+            crRet.subjectId = subjectId;
+            return View(crRet);
         }
 
         [HttpPost]
-        public ActionResult Value(string score)
+        public ActionResult Value(CriteriaReturn crRet)
         {
-            //Получили оценочку. Потом много оценочек
+            Statistics stat = new Statistics();
+            stat.Update(crRet);
+
             return RedirectToAction("Index", "Home");
         }
 	}

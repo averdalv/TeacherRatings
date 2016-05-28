@@ -1,31 +1,120 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@using TeacherRatings.Models;
+@model TeacherRatings.HelperClasses.CriteriaReturn
+@{
+        Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+    <!DOCTYPE HTML>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Value</title>
-</head>
-<body>
-    <div>
-        @{
-    //Тут надо зарендерить подогнать чтобы было симпатично. а пока тест
-        }
-        @using (Html.BeginForm())
-        {
-            <p> 1 :   @Html.RadioButton("score", "1"); </p>
-            <p> 2 :   @Html.RadioButton("score", "2"); </p>
-            <p> 3 :   @Html.RadioButton("score", "3"); </p>
-            <p> 4 :   @Html.RadioButton("score", "4"); </p>
-            <p> 5 :   @Html.RadioButton("score", "5"); </p>
-
-            <input type="submit" value="Добавить" />
-        }
-
-
-    </div>
-</body>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Value</title>
+    </head>
+    <body>
+        <div>
+            @using (Html.BeginForm())
+            {                                 
+                <p><h3>@ViewBag.Criterias[0].Split('|')[0]</h3></p>
+                    <p>                
+                        1 : @Html.RadioButtonFor(x => x.Preparedness, "1");
+                        2 : @Html.RadioButtonFor(x => x.Preparedness, "2");
+                        3 : @Html.RadioButtonFor(x => x.Preparedness, "3");
+                        4 : @Html.RadioButtonFor(x => x.Preparedness, "4");
+                        5 : @Html.RadioButtonFor(x => x.Preparedness, "5");       
+                    </p>
+                <p><h3>@ViewBag.Criterias[1].Split('|')[0]</h3></p>
+                    <p>                
+                       1 : @Html.RadioButtonFor(x => x.Interest, "1");
+                       2 : @Html.RadioButtonFor(x => x.Interest, "2");
+                       3 : @Html.RadioButtonFor(x => x.Interest, "3");
+                       4 : @Html.RadioButtonFor(x => x.Interest, "4");
+                       5 : @Html.RadioButtonFor(x => x.Interest, "5");         
+                    </p>
+                <p><h3>@ViewBag.Criterias[2].Split('|')[0]</h3></p>
+                    <p>                
+                       1 : @Html.RadioButtonFor(x => x.Accessibility, "1");
+                       2 : @Html.RadioButtonFor(x => x.Accessibility, "2");
+                       3 : @Html.RadioButtonFor(x => x.Accessibility, "3");
+                       4 : @Html.RadioButtonFor(x => x.Accessibility, "4");
+                       5 : @Html.RadioButtonFor(x => x.Accessibility, "5");         
+                    </p>
+                <p><h3>@ViewBag.Criterias[3].Split('|')[0]</h3></p>
+                    <p>                
+                       1 : @Html.RadioButtonFor(x => x.Examples, "1");
+                       2 : @Html.RadioButtonFor(x => x.Examples, "2");
+                       3 : @Html.RadioButtonFor(x => x.Examples, "3");
+                       4 : @Html.RadioButtonFor(x => x.Examples, "4");
+                       5 : @Html.RadioButtonFor(x => x.Examples, "5");         
+                    </p>
+                <p><h3>@ViewBag.Criterias[4].Split('|')[0]</h3></p>
+                    <p>                
+                       1 : @Html.RadioButtonFor(x => x.Enthusiasm, "1");
+                       2 : @Html.RadioButtonFor(x => x.Enthusiasm, "2");
+                       3 : @Html.RadioButtonFor(x => x.Enthusiasm, "3");
+                       4 : @Html.RadioButtonFor(x => x.Enthusiasm, "4");
+                       5 : @Html.RadioButtonFor(x => x.Enthusiasm, "5");         
+                    </p>
+                <p><h3>@ViewBag.Criterias[5].Split('|')[0]</h3></p>
+                    <p>                
+                       1 : @Html.RadioButtonFor(x => x.ClarityImportance, "1");
+                       2 : @Html.RadioButtonFor(x => x.ClarityImportance, "2");
+                       3 : @Html.RadioButtonFor(x => x.ClarityImportance, "3");
+                       4 : @Html.RadioButtonFor(x => x.ClarityImportance, "4");
+                       5 : @Html.RadioButtonFor(x => x.ClarityImportance, "5");         
+                    </p>
+                <p><h3>@ViewBag.Criterias[6].Split('|')[0]</h3></p>
+                    <p>                
+                       1 : @Html.RadioButtonFor(x => x.CommunicationDisciplines, "1");
+                       2 : @Html.RadioButtonFor(x => x.CommunicationDisciplines, "2");
+                       3 : @Html.RadioButtonFor(x => x.CommunicationDisciplines, "3");
+                       4 : @Html.RadioButtonFor(x => x.CommunicationDisciplines, "4");
+                       5 : @Html.RadioButtonFor(x => x.CommunicationDisciplines, "5");         
+                    </p>
+                <p><h3>@ViewBag.Criterias[7].Split('|')[0]</h3></p>
+                    <p>                
+                       1 : @Html.RadioButtonFor(x => x.ImproveMySkills, "1");
+                       2 : @Html.RadioButtonFor(x => x.ImproveMySkills, "2");
+                       3 : @Html.RadioButtonFor(x => x.ImproveMySkills, "3");
+                       4 : @Html.RadioButtonFor(x => x.ImproveMySkills, "4");
+                       5 : @Html.RadioButtonFor(x => x.ImproveMySkills, "5");         
+                    </p>
+                <p><h3>@ViewBag.Criterias[8].Split('|')[0]</h3></p>
+                    <p>                
+                       1 : @Html.RadioButtonFor(x => x.Ratio, "1");
+                       2 : @Html.RadioButtonFor(x => x.Ratio, "2");
+                       3 : @Html.RadioButtonFor(x => x.Ratio, "3");
+                       4 : @Html.RadioButtonFor(x => x.Ratio, "4");
+                       5 : @Html.RadioButtonFor(x => x.Ratio, "5");         
+                    </p>
+                <p><h3>@ViewBag.Criterias[9].Split('|')[0]</h3></p>
+                    <p>                
+                       1 : @Html.RadioButtonFor(x => x.Insistence, "1");
+                       2 : @Html.RadioButtonFor(x => x.Insistence, "2");
+                       3 : @Html.RadioButtonFor(x => x.Insistence, "3");
+                       4 : @Html.RadioButtonFor(x => x.Insistence, "4");
+                       5 : @Html.RadioButtonFor(x => x.Insistence, "5");         
+                    </p>
+                <p><h3>@ViewBag.Criterias[10].Split('|')[0]</h3></p>
+                    <p>                
+                       1 : @Html.RadioButtonFor(x => x.ObjectivityAssessment, "1");
+                       2 : @Html.RadioButtonFor(x => x.ObjectivityAssessment, "2");
+                       3 : @Html.RadioButtonFor(x => x.ObjectivityAssessment, "3");
+                       4 : @Html.RadioButtonFor(x => x.ObjectivityAssessment, "4");
+                       5 : @Html.RadioButtonFor(x => x.ObjectivityAssessment, "5");         
+                    </p>
+                <p><h3>@ViewBag.Criterias[11].Split('|')[0]</h3></p>
+                    <p>                
+                       1 : @Html.RadioButtonFor(x => x.Visit, "1");
+                       2 : @Html.RadioButtonFor(x => x.Visit, "2");
+                       3 : @Html.RadioButtonFor(x => x.Visit, "3");
+                       4 : @Html.RadioButtonFor(x => x.Visit, "4");
+                       5 : @Html.RadioButtonFor(x => x.Visit, "5");         
+                    </p>
+          
+                
+                <input type="submit" value="Добавить" />
+            }
+        </div>
+    </body>
 </html>

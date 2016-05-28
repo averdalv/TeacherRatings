@@ -124,6 +124,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HelperClasses\CriteriaReturn.cs" />
+    <Compile Include="Math\Statistics.cs" />
     <Compile Include="Migrations\201605190159198_Init.cs" />
     <Compile Include="Migrations\201605190159198_Init.Designer.cs">
       <DependentUpon>201605190159198_Init.cs</DependentUpon>
@@ -132,6 +134,11 @@
     <Compile Include="Migrations\201605190202312_Image.Designer.cs">
       <DependentUpon>201605190202312_Image.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605281217289_Criteria.cs" />
+    <Compile Include="Migrations\201605281217289_Criteria.Designer.cs">
+      <DependentUpon>201605281217289_Criteria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Criteria.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DataContext.cs" />
@@ -209,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605190202312_Image.resx">
       <DependentUpon>201605190202312_Image.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605281217289_Criteria.resx">
+      <DependentUpon>201605281217289_Criteria.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
