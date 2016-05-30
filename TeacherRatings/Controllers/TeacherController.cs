@@ -86,18 +86,10 @@ namespace TeacherRatings.Controllers
             //Ne Ok. Потом переделаю. Для дебага пойдет / В базе будет потом
             //List<string> list = new List<string>();
             ViewBag.Criterias = new List<string>();
-            ViewBag.Criterias.Add("Підготовленість викладача та рівень володіння матеріалом|Preparedness");
-            ViewBag.Criterias.Add("Цікавість викладання матеріалу|Interest");
-            ViewBag.Criterias.Add("Доступність та зрозумілість представлення матеріалу|Accessibility");
-            ViewBag.Criterias.Add("Вдалість підбору викладачем прикладів/задач|Examples");
-            ViewBag.Criterias.Add("Ентузіазм викладача при подачі матеріалу|Enthusiasm");
-            ViewBag.Criterias.Add("Зрозумілість значення дисципліни для моєї спеціальності|ClarityImportance");
-            ViewBag.Criterias.Add("Зрозумілість зв’язку дисципліни з іншими дисциплінами моєї спеціальності|CommunicationDisciplines");
-            ViewBag.Criterias.Add("Наскільки пари даного викладача підвищують мою кваліфікацію в даній дисципліні|ImproveMySkills");
-            ViewBag.Criterias.Add("Ставлення викладача до студентів|Ratio");
-            ViewBag.Criterias.Add("Вимогливість викладача|Insistence");
-            ViewBag.Criterias.Add("Об’єктивність оцінювання|ObjectivityAssessment");
-            ViewBag.Criterias.Add("Відвідування мною пар з даної дисципліни|Visit");
+            foreach(var criteria in context.CriteriaStrings)
+            {
+                ViewBag.Criterias.Add(criteria.CriteriaText);
+            }
 
             CriteriaReturn crRet = new CriteriaReturn();
             crRet.teacherId = teacherId;

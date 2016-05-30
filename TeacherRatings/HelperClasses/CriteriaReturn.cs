@@ -9,20 +9,11 @@ namespace TeacherRatings.HelperClasses
     {
         public CriteriaReturn()
         {
+            Criterias = new List<string>();
+            for (int i = 0; i < 12; ++i) Criterias.Add(string.Empty);
         }
         public int teacherId{ get; set; }
         public int subjectId{ get; set; }
-        public string Preparedness { get; set; }
-        public string Interest{ get; set; }
-        public string Accessibility{ get; set; }
-        public string Examples{ get; set; }
-        public string Enthusiasm{ get; set; }
-        public string ClarityImportance{ get; set; }
-        public string CommunicationDisciplines{ get; set; }
-        public string ImproveMySkills{ get; set; }
-        public string Ratio{ get; set; }
-        public string Insistence{ get; set; }
-        public string ObjectivityAssessment{ get; set; }
-        public string Visit { get; set; }
+        public List<string> Criterias { get; set; }
     }
 }

@@ -138,7 +138,12 @@
     <Compile Include="Migrations\201605281217289_Criteria.Designer.cs">
       <DependentUpon>201605281217289_Criteria.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605300624374_CriteriaStrings.cs" />
+    <Compile Include="Migrations\201605300624374_CriteriaStrings.Designer.cs">
+      <DependentUpon>201605300624374_CriteriaStrings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Criteria.cs" />
+    <Compile Include="Models\CriteriaStrings.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DataContext.cs" />
@@ -219,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605281217289_Criteria.resx">
       <DependentUpon>201605281217289_Criteria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605300624374_CriteriaStrings.resx">
+      <DependentUpon>201605300624374_CriteriaStrings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

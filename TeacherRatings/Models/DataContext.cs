@@ -15,8 +15,7 @@ namespace TeacherRatings.Models
         public DbSet<Department> Departments { get; set; }
         public DbSet<TeacherSubject> TeacherSubjects { get; set; }
         public DbSet<Criteria> Criterias { get; set; }
-
-
+        public DbSet<CriteriaStrings> CriteriaStrings { get; set; }
     }
 
 }
