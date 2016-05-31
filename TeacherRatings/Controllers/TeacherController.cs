@@ -109,5 +109,9 @@ namespace TeacherRatings.Controllers
         {
             return View();
         }
+        public ActionResult Teachers()
+        {
+            return View();
+        }
 	}
 }

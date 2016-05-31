@@ -198,6 +198,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\RadioValue.css" />
     <Content Include="Content\TeacherPage.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -246,7 +247,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Teachers.cshtml" />
+    <Content Include="Views\Teacher\Teachers.cshtml" />
     <Content Include="Views\Teacher\Add.cshtml" />
     <Content Include="Views\Teacher\TeacherPage.cshtml" />
     <Content Include="Views\Teacher\Value.cshtml" />

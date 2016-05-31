@@ -24,12 +24,6 @@ namespace TeacherRatings.Controllers
             //context.Criterias.Add(c);
             //context.SaveChanges();
             return View();
-        }
-
-        public ActionResult Teachers()
-        {
-            return View();
-        }
-        
+        }        
     }
 }
