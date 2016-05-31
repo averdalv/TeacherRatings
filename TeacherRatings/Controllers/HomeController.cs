@@ -30,9 +30,6 @@ namespace TeacherRatings.Controllers
         {
             return View();
         }
-        public ActionResult TeacherPage()
-        {
-            return View();
-        }
+        
     }
 }

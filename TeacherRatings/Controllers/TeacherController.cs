@@ -105,5 +105,9 @@ namespace TeacherRatings.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        public ActionResult TeacherPage()
+        {
+            return View();
+        }
 	}
 }
