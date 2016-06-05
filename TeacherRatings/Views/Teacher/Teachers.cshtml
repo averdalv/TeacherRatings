@@ -2,6 +2,8 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
  }
+@using TeacherRatings.ViewModels;
+@model TeachersViewModel
 <div class="container">
     <h2>Викладачі</h2>
 </div>
@@ -10,151 +12,20 @@
         <div class="tabs">
             <div class="container">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#OM" data-toggle="tab">ОМ<span class="badge">20</span></a></li>
-                    <li><a href="#TK" data-toggle="tab">ТК<span class="badge">20</span></a></li>
-                    <li><a href="#MI" data-toggle="tab">МІ<span class="badge">20</span></a></li>
-                    <li><a href="#MCC" data-toggle="tab">МСС<span class="badge">20</span></a></li>
-                    <li><a href="#TTP" data-toggle="tab">ТТП<span class="badge">20</span></a></li>
-                    <li><a href="#DO" data-toggle="tab">ДО<span class="badge">20</span></a></li>
-                    <li><a href="#PC" data-toggle="tab">ПС<span class="badge">20</span></a></li>
-                    <li><a href="#CA" data-toggle="tab">СА<span class="badge">20</span></a></li>
-                    <li><a href="#IC" data-toggle="tab">ІС<span class="badge">20</span></a></li>
+                    
+                    @foreach (var department in ViewBag.Departments)
+                    {
+                        <li><a data-ajax="true" data-toogle="tab" data-ajax-mode="replace" data-ajax-update="#AjaxPlace" href="Teachers?id=@department.DepartmentId&page=1">@department.Abbreviation<span class="badge">@department.CountTeachers</span></a></li> 
+                       @* <li>@Ajax.ActionLink((string)department.Abbreviation, "Teachers", new { id = department.DepartmentId, page = 1 }, new AjaxOptions { UpdateTargetId = "AjaxPlace" })</li>*@
+
+                    }
                 </ul>
             </div>
-
-            <div class="tab-content">
-                <div class="tab-pane fade in active" id="OM">
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x240" alt="">
-                            <div class="caption">
-                                <h3><a href="#">Прізвище Ім'я</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum, quo suscipit dolor a corporis odit omnis assumenda reprehenderit blanditiis beatae ea facilis laudantium molestias enim voluptatibus dignissimos consequatur sequi.</p>
-                                <a href="/Teacher/TeacherPage" class="btn btn-success">Детальніше<i class="fa fa-arrow-right"></i></a>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x240" alt="">
-                            <div class="caption">
-                                <h3><a href="#">Прізвище Ім'я</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum, quo suscipit dolor a corporis odit omnis assumenda reprehenderit blanditiis beatae ea facilis laudantium molestias enim voluptatibus dignissimos consequatur sequi.</p>
-                                <a href="/Teacher/TeacherPage" class="btn btn-success">Детальніше<i class="fa fa-arrow-right"></i></a>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x240" alt="">
-                            <div class="caption">
-                                <h3><a href="#">Прізвище Ім'я</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum, quo suscipit dolor a corporis odit omnis assumenda reprehenderit blanditiis beatae ea facilis laudantium molestias enim voluptatibus dignissimos consequatur sequi.</p>
-                                <a href="/Teacher/TeacherPage" class="btn btn-success">Детальніше<i class="fa fa-arrow-right"></i></a>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x240" alt="">
-                            <div class="caption">
-                                <h3><a href="#">Прізвище Ім'я</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum, quo suscipit dolor a corporis odit omnis assumenda reprehenderit blanditiis beatae ea facilis laudantium molestias enim voluptatibus dignissimos consequatur sequi.</p>
-                                <a href="/Teacher/TeacherPage" class="btn btn-success">Детальніше<i class="fa fa-arrow-right"></i></a>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="TK">
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x240" alt="">
-                            <div class="caption">
-                                <h3><a href="#">Прізвище Ім'я</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum, quo suscipit dolor a corporis odit omnis assumenda reprehenderit blanditiis beatae ea facilis laudantium molestias enim voluptatibus dignissimos consequatur sequi.</p>
-                                <a href="/Teacher/TeacherPage" class="btn btn-success">Детальніше<i class="fa fa-arrow-rigth"></i></a>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x240" alt="">
-                            <div class="caption">
-                                <h3><a href="#">Прізвище Ім'я</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum, quo suscipit dolor a corporis odit omnis assumenda reprehenderit blanditiis beatae ea facilis laudantium molestias enim voluptatibus dignissimos consequatur sequi.</p>
-                                <a href="/Teacher/TeacherPage" class="btn btn-success">Детальніше<i class="fa fa-arrow-rigth"></i></a>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x240" alt="">
-                            <div class="caption">
-                                <h3><a href="#">Прізвище Ім'я</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum, quo suscipit dolor a corporis odit omnis assumenda reprehenderit blanditiis beatae ea facilis laudantium molestias enim voluptatibus dignissimos consequatur sequi.</p>
-                                <a href="/Teacher/TeacherPage" class="btn btn-success">Детальніше<i class="fa fa-arrow-rigth"></i></a>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x240" alt="">
-                            <div class="caption">
-                                <h3><a href="#">Прізвище Ім'я</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum, quo suscipit dolor a corporis odit omnis assumenda reprehenderit blanditiis beatae ea facilis laudantium molestias enim voluptatibus dignissimos consequatur sequi.</p>
-                                <a href="/Teacher/TeacherPage" class="btn btn-success">Детальніше<i class="fa fa-arrow-rigth"></i></a>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/300x240" alt="">
-                            <div class="caption">
-                                <h3><a href="#">Прізвище Ім'я</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum, quo suscipit dolor a corporis odit omnis assumenda reprehenderit blanditiis beatae ea facilis laudantium molestias enim voluptatibus dignissimos consequatur sequi.</p>
-                                <a href="/Teacher/TeacherPage" class="btn btn-success">Детальніше<i class="fa fa-arrow-right"></i></a>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="MI"></div>
-                <div class="tab-pane fade" id="MCC"></div>
-                <div class="tab-pane fade" id="TTP"></div>
-                <div class="tab-pane fade" id="DO"></div>
-                <div class="tab-pane fade" id="PC"></div>
-                <div class="tab-pane fade" id="CA"></div>
-                <div class="tab-pane fade" id="IC"></div>
+            <div id="AjaxPlace">       
             </div>
-
-        </div>
-    </div>
 </div>
-<nav>
-    <div class="container">
-        <ul class="pagination">
-            <li>
-                <a href="#">
-                    <i class="fa fa-angle-double-left"></i>
-                </a>
-            </li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-angle-double-right"></i>
-                </a>
-            </li>
-        </ul>
-    </div>
-</nav>
+</div>
+</div>
+
+@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+@Scripts.Render("~/PersonalScripts/TeachersScript.js")

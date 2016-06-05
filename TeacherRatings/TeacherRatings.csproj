@@ -179,6 +179,22 @@
     <Compile Include="Migrations\201605312045015_UsersParam.Designer.cs">
       <DependentUpon>201605312045015_UsersParam.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606040155207_Teacher_Change.cs" />
+    <Compile Include="Migrations\201606040155207_Teacher_Change.Designer.cs">
+      <DependentUpon>201606040155207_Teacher_Change.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606040359157_Abbreviation.cs" />
+    <Compile Include="Migrations\201606040359157_Abbreviation.Designer.cs">
+      <DependentUpon>201606040359157_Abbreviation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606040412115_fix_length_Abbr.cs" />
+    <Compile Include="Migrations\201606040412115_fix_length_Abbr.Designer.cs">
+      <DependentUpon>201606040412115_fix_length_Abbr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606040425415_InformationLength.cs" />
+    <Compile Include="Migrations\201606040425415_InformationLength.Designer.cs">
+      <DependentUpon>201606040425415_InformationLength.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ApplicationRole.cs" />
     <Compile Include="Models\ApplicationRoleManager.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -192,9 +208,13 @@
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Models\TeacherSubject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\DepartmentViewModel.cs" />
     <Compile Include="ViewModels\EditViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\Pagination.cs" />
     <Compile Include="ViewModels\RegistrationViewModel.cs" />
+    <Compile Include="ViewModels\TeacherPagination.cs" />
+    <Compile Include="ViewModels\TeachersViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\DataBase.mdf" />
@@ -210,13 +230,21 @@
     <Content Include="Content\Registration.css" />
     <Content Include="Content\RadioValue.css" />
     <Content Include="Content\TeacherPage.css" />
+    <Content Include="Content\TeachersPartial.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Main.css" />
     <Content Include="PersonalScripts\TeacherPageScript.js" />
+    <Content Include="PersonalScripts\TeachersPartialScript.js" />
+    <Content Include="PersonalScripts\TeachersScript.js" />
     <Content Include="Pictures\cyb.jpg" />
+    <Content Include="Pictures\TeacherPictures\1.jpg" />
+    <Content Include="Pictures\TeacherPictures\2.jpg" />
+    <Content Include="Pictures\TeacherPictures\3.jpg" />
+    <Content Include="Pictures\TeacherPictures\4.jpg" />
+    <Content Include="Pictures\TeacherPictures\5.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\fontawesome-webfont.eot" />
@@ -235,6 +263,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-2.2.1.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -265,6 +295,7 @@
     <Content Include="Views\Account\Registration.cshtml" />
     <Content Include="Views\Shared\LoginPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Teacher\TeachersPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605190159198_Init.resx">
@@ -284,6 +315,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605312045015_UsersParam.resx">
       <DependentUpon>201605312045015_UsersParam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606040155207_Teacher_Change.resx">
+      <DependentUpon>201606040155207_Teacher_Change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606040359157_Abbreviation.resx">
+      <DependentUpon>201606040359157_Abbreviation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606040412115_fix_length_Abbr.resx">
+      <DependentUpon>201606040412115_fix_length_Abbr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606040425415_InformationLength.resx">
+      <DependentUpon>201606040425415_InformationLength.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

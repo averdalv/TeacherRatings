@@ -1,0 +1,47 @@
+﻿@using TeacherRatings.ViewModels;
+@model TeachersViewModel
+<link href="@Url.Content("~/Content/TeachersPartial.css")" rel="stylesheet" type="text/css" />
+<div class="tab-content">
+    <div class="tab-pane fade in active">
+    @foreach (TeacherPagination t in Model.Teachers)
+    {
+
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+            <div class="thumbnail">
+                <img src="@t.Image" alt="Фото" />
+                <div class="caption">
+                    <h4>@t.LastName </h4>
+                    <h4>@t.Name @t.Patronymic</h4>
+                    <p>@t.Information</p>
+                    <a href="@t.Link" class="btn btn-primary">Детальніше<i class="fa fa-arrow-right"></i></a>
+                </div>
+            </div>
+            </div>
+    
+    }
+    </div>
+ </div>
+<div class="container-fluid"></div>
+<div id="CurrentPage" style="display:none">@Model.PageInfo.CurrentPage</div>
+<nav class="PaginationPart">
+    <div class="container">
+        <ul class="pagination">
+            <li class="Pages">
+                <a href="/Teacher/Teachers?id=@Model.DepartentId&page=1" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#AjaxPlace">
+                    <i class="fa fa-angle-double-left"></i>
+                </a>
+            </li>
+            
+                @for (int i = 1; i <= Model.PageInfo.PageCount;i++ )
+                {
+                <li class="Pages Page" ><a href="/Teacher/Teachers?id=@Model.DepartentId&page=@i" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#AjaxPlace">@i</a> </li>
+                }
+            <li class="Pages">
+                <a href="/Teacher/Teachers?id=@Model.DepartentId&page=@Model.PageInfo.PageCount" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#AjaxPlace">
+                    <i class="fa fa-angle-double-right"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+@Scripts.Render("~/PersonalScripts/TeachersPartialScript.js")

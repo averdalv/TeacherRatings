@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using TeacherRatings.Models;
 using TeacherRatings.Math;
 using TeacherRatings.HelperClasses;
+using TeacherRatings.ViewModels;
 
 namespace TeacherRatings.Controllers
 {
@@ -105,13 +106,80 @@ namespace TeacherRatings.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-        public ActionResult TeacherPage()
+       
+        public ActionResult TeacherPage(int id)
         {
             return View();
         }
-        public ActionResult Teachers()
+       /* public ActionResult Teachers()
         {
+            var context = new DataContext();
+            var departments = context.Departments.ToList();
+            List<DepartmentViewModel> departmentVM = new List<DepartmentViewModel>();
+            foreach (var d in departments)
+            {
+                DepartmentViewModel dvm = new DepartmentViewModel();
+                dvm.Name = d.Name;
+                dvm.DepartmentId = d.DepartmentId;
+                dvm.Abbreviation = d.Abbreviation;
+
+                dvm.CountTeachers = d.Teachers.Count;
+                departmentVM.Add(dvm);
+            }
+            ViewBag.Departments = departmentVM;
             return View();
+        }*/
+
+        //Получаем преподавателей по кафедре и странице
+        public ActionResult Teachers(int? id,int? page)
+        {   var context=new DataContext();
+            int pageCount;
+            int pageSize=4;
+            var departments=context.Departments.ToList();
+            List<DepartmentViewModel> departmentVM=new List<DepartmentViewModel>();
+            foreach(var d in departments)
+            {
+                DepartmentViewModel dvm = new DepartmentViewModel();
+                dvm.Name = d.Name;
+                dvm.DepartmentId = d.DepartmentId;
+                dvm.Abbreviation = d.Abbreviation;
+
+                dvm.CountTeachers = d.Teachers.Count;
+                departmentVM.Add(dvm);
+            }
+            ViewBag.Departments = departmentVM;
+            bool view=false;
+            if(id==null&&page==null)
+            {
+                id = departments.First().DepartmentId;
+                page = 1;
+                view=true;//если пользователь не кликал по вкалке или странице, а просто перешел по ссылке
+            }
+            else if(page==null)page=1;
+            
+                var count=context.Teachers.Where(d=>d.Department.DepartmentId==id).Count();
+                pageCount=count/pageSize;
+                if(count%pageSize!=0)pageCount++;
+                Pagination Pag=new Pagination(){PageCount=pageCount,CurrentPage=(int)page,PageSize=9,ItemsCount=count};
+                List<TeacherPagination> TeachPag=new List<TeacherPagination>();
+                var teachers = context.Teachers.Where(d => d.Department.DepartmentId == id).ToList().Skip((int)(page - 1) * pageSize).Take(pageSize);
+                foreach(var teacher in teachers)
+                {
+                    TeacherPagination teacherPagination =new TeacherPagination();
+                    teacherPagination.Name=teacher.Name;
+                    teacherPagination.LastName=teacher.LastName;
+                    teacherPagination.Patronymic=teacher.Patronymic;
+                    teacherPagination.Information = teacher.Information.Substring(0,200)+"...";
+                    teacherPagination.Image=teacher.Image;
+                    teacherPagination.Link=@"TeacherPage?"+"id="+teacher.TeacherId;
+                    TeachPag.Add(teacherPagination);
+                }
+                TeachersViewModel model=new TeachersViewModel(){Teachers=TeachPag,PageInfo=Pag,DepartentId=teachers.First().Department.DepartmentId};
+                if (view)
+                    return View(model);
+                 return PartialView("TeachersPartial", model);
+           
+
         }
 	}
 }

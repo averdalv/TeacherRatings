@@ -14,8 +14,10 @@ namespace TeacherRatings.Models
         }
         public int DepartmentId { get; set; }
         [Required]
-        [MaxLength(300)]
+        [MaxLength(60)]
         public string Name { get; set; }
+        [MaxLength(40)]
+        public string Abbreviation { get; set; }
         public virtual ICollection<Teacher> Teachers { get; set; }
 
     }
