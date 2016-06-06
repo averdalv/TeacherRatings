@@ -26,6 +26,15 @@ namespace TeacherRatings.Controllers
             //ts.SubjectId = 1;
             //ts.TeacherId = 2;
 
+            //Criteria cr = new Criteria();
+            //cr.Accessibility = cr.ClarityImportance = cr.Insistence =
+            //    cr.Interest = cr.ObjectivityAssessment = cr.Preparedness =
+            //     cr.Ratio = cr.Visit = string.Empty;
+            //TeacherSubject ts = (from c in context.TeacherSubjects 
+            //                         where c.TeacherSubjectId == 4
+            //                     select c).First();
+            //ts.Criteria = cr;
+            //context.SaveChanges();
             //TeacherSubject ts2 = new TeacherSubject();
             //ts2.SubjectId = 2;
             //ts2.TeacherId = 2;

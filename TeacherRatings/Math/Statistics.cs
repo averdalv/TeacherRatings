@@ -15,8 +15,10 @@ namespace TeacherRatings.Math
         public void Update(CriteriaReturn crRet)
         {
             var context = new DataContext();
+            int teacherId = int.Parse(crRet.TeacherId);
+            int subjectId = int.Parse(crRet.SubjectId);
             var criteria = (from row in context.TeacherSubjects
-                            where (row.TeacherId == crRet.teacherId && row.SubjectId == crRet.subjectId)
+                            where (row.TeacherId == teacherId && row.SubjectId == subjectId)
                             select row.Criteria).First();
             criteria.Preparedness += crRet.Criterias[0];
             criteria.Interest += crRet.Criterias[1];
@@ -27,7 +29,7 @@ namespace TeacherRatings.Math
             criteria.ObjectivityAssessment += crRet.Criterias[6];
             criteria.Visit += crRet.Criterias[7];
             criteria.TeacherSubject = (from row in context.TeacherSubjects
-                                       where (row.TeacherId == crRet.teacherId && row.SubjectId == crRet.subjectId)
+                                       where (row.TeacherId == teacherId && row.SubjectId == subjectId)
                                        select row).First();
             context.SaveChanges();           
 
