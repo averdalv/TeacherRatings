@@ -14,6 +14,9 @@ namespace TeacherRatings.HelperClasses
         }
         public int teacherId{ get; set; }
         public int subjectId{ get; set; }
+        public string userId { get; set; }
         public List<string> Criterias { get; set; }
+
+        public string SubjectId { get; set; }
     }
 }

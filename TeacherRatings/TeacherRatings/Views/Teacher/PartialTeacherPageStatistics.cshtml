@@ -1,0 +1,138 @@
+﻿
+@{
+   // Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container-fluid">
+        <div class="row">
+            <h2>Оцінки</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <div class="tabs">
+
+                <ul class="nav nav-tabs" id="tabRating">
+                    <li class="active"><a href="#firstTab" data-toggle="tab">Цікавість викладання</a></li>
+                    <li><a href="#secondTab" data-toggle="tab">Зрозумілість викладання</a></li>
+                    <li><a href="#thirdTab" data-toggle="tab">Об'єктивність оцінювання</a></li>
+                    <li><a href="#fourthTab" data-toggle="tab">Підготовленість викладача</a></li>
+                    <li><a href="#fifthTab" data-toggle="tab">Значення дисципліни</a></li>
+                    <li><a href="#sixthTab" data-toggle="tab">Ставлення до студентів</a></li>
+                    <li><a href="#seventhTab" data-toggle="tab">Вимогливість викладача</a></li>
+                    <li><a href="#eighthTab" data-toggle="tab">Відвідування пар студентами</a></li>
+                </ul>
+
+
+                <div class="tab-content">
+                    <div class="tab-pane  in active" id="firstTab">
+                        <div>
+                            <span><span id="oneRating"></span>-1</span>
+                            <span><span id="twoRating"></span>-2</span>
+                            <span><span id="threeRating"></span>-3</span>
+                            <span><span id="fourRating"></span>-4</span>
+                            <span><span id="fiveRating"></span>-5</span>
+                            <span id="firstVoices" class="voices">Всього голосів: 40</span>
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane " id="secondTab">
+                        <div>
+                            <span><span id="oneRating"></span>-1</span>
+                            <span><span id="twoRating"></span>-2</span>
+                            <span><span id="threeRating"></span>-3</span>
+                            <span><span id="fourRating"></span>-4</span>
+                            <span><span id="fiveRating"></span>-5</span>
+                            <span id="secondVoices" class="voices">Всього голосів: 40</span>
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane " id="thirdTab">
+                        <div>
+                            <span><span id="oneRating"></span>-1</span>
+                            <span><span id="twoRating"></span>-2</span>
+                            <span><span id="threeRating"></span>-3</span>
+                            <span><span id="fourRating"></span>-4</span>
+                            <span><span id="fiveRating"></span>-5</span>
+                            <span id="thirdVoices" class="voices">Всього голосів: 40</span>
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane " id="fourthTab">
+                        <div>
+                            <span><span id="oneRating"></span>-1</span>
+                            <span><span id="twoRating"></span>-2</span>
+                            <span><span id="threeRating"></span>-3</span>
+                            <span><span id="fourRating"></span>-4</span>
+                            <span><span id="fiveRating"></span>-5</span>
+                            <span id="fourthVoices" class="voices">Всього голосів: 40</span>
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane " id="fifthTab">
+                        <div>
+                            <span><span id="oneRating"></span>-1</span>
+                            <span><span id="twoRating"></span>-2</span>
+                            <span><span id="threeRating"></span>-3</span>
+                            <span><span id="fourRating"></span>-4</span>
+                            <span><span id="fiveRating"></span>-5</span>
+                            <span id="fifthVoices" class="voices">Всього голосів: 40</span>
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane " id="sixthTab">
+                        <div>
+                            <span><span id="oneRating"></span>-1</span>
+                            <span><span id="twoRating"></span>-2</span>
+                            <span><span id="threeRating"></span>-3</span>
+                            <span><span id="fourRating"></span>-4</span>
+                            <span><span id="fiveRating"></span>-5</span>
+                            <span id="sixthVoices" class="voices">Всього голосів: 40</span>
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane " id="seventhTab">
+                        <div>
+                            <span><span id="oneRating"></span>-1</span>
+                            <span><span id="twoRating"></span>-2</span>
+                            <span><span id="threeRating"></span>-3</span>
+                            <span><span id="fourRating"></span>-4</span>
+                            <span><span id="fiveRating"></span>-5</span>
+                            <span id="seventhVoices" class="voices">Всього голосів: 40</span>
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane " id="eighthTab">
+                        <div>
+                            <span><span id="oneRating"></span>-1</span>
+                            <span><span id="twoRating"></span>-2</span>
+                            <span><span id="threeRating"></span>-3</span>
+                            <span><span id="fourRating"></span>-4</span>
+                            <span><span id="fiveRating"></span>-5</span>
+                            <span id="eighthVoices" class="voices">Всього голосів: 40</span>
+                        </div>
+
+                    </div>
+                    <div id="TabSvg">
+
+                    </div>
+                </div>
+
+
+                <hr>
+            </div>
+        </div>
+    </div>
+
+@Scripts.Render("~/Scripts/jquery-2.2.1.min.js")
+@Scripts.Render("~/Scripts/d3.js")
+@Scripts.Render("~/PersonalScripts/Donat3D.js")
+@Scripts.Render("~/PersonalScripts/TeacherPageScript.js")

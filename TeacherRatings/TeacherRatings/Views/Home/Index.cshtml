@@ -1,0 +1,27 @@
+﻿@using System.Web.Mvc;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<ul>
+    @foreach (var t in ViewBag.Teachers)
+    {
+        <li>Имя: @t.Name   Фамилия : @t.LastName </li>
+    }
+    @Html.ActionLink("Форма добавления", "Add", "Teacher")
+
+    <!--<p><a href="Views/Home/Add.cshtml">1</a></p> -->
+</ul>
+@Html.ActionLink("Оценить преподователя с id = 1", "Value", "Teacher", new { teacherId = 1, subjectId = 1 }, null);
+
+
+    @{
+    //<button type="button" onclick="location.href=@url.RequestContext">
+    //<input type="button" value="Go Somewhere Else" onclick="location.href=@Html.Action("Value", "Value", new { id = 1 })"  />
+    //<h3><a href="~/Views/Value/Value.cshtml">Тест для оценки первого преподавателя</a></h3>
+    //Html.Action("Value/1", "Value");
+    //@Html.Action("Value", "Value", new { id = 1 });
+    //@Html.ActionLink("DisplayText", "Value", "Value", new { id = 1 });
+    }

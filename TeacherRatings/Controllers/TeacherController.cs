@@ -7,6 +7,10 @@ using TeacherRatings.Models;
 using TeacherRatings.Math;
 using TeacherRatings.HelperClasses;
 using TeacherRatings.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using System.Security.Claims;
 
 namespace TeacherRatings.Controllers
 {
@@ -46,10 +50,16 @@ namespace TeacherRatings.Controllers
 
         //Передаем конкретного препода и смотрим краткую инфу по ему и заполняем пердметы 
         [HttpGet]
-        public ActionResult Value(int teacherId, int subjectId)
+        public ActionResult Value(int teacherId)
         {  
 
-          var context = new DataContext();
+            var context = new DataContext();
+
+            //ApplicationUserManager appMan = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            //ApplicationUser appUser = appMan.FindAsync();
+            string UserId = (from c in context.Users
+                             where c.Email == HttpContext.User.Identity.Name
+                             select c.Id).First();
 
             //TeacherSubject tc = new TeacherSubject();
             //tc.TeacherId = 1;
@@ -87,6 +97,15 @@ namespace TeacherRatings.Controllers
             //Ne Ok. Потом переделаю. Для дебага пойдет / В базе будет потом
             //List<string> list = new List<string>();
             ViewBag.Criterias = new List<string>();
+            List<int> subjId = (from c in context.TeacherSubjects
+                                where c.TeacherId == teacherId
+                                select c.SubjectId).ToList();
+            List<Subject> Sub = new List<Subject>();
+            Sub.AddRange((from c in context.Subjects
+                          where subjId.Contains(c.SubjectId)
+                          select c).ToList());
+            ViewBag.Subjects = Sub;
+
             foreach(var criteria in context.CriteriaStrings)
             {
                 ViewBag.Criterias.Add(criteria.CriteriaText);
@@ -94,7 +113,7 @@ namespace TeacherRatings.Controllers
 
             CriteriaReturn crRet = new CriteriaReturn();
             crRet.teacherId = teacherId;
-            crRet.subjectId = subjectId;
+            crRet.userId = UserId;
             return View(crRet);
         }
 

@@ -1,0 +1,24 @@
+﻿
+@using Microsoft.AspNet.Identity
+<link href="@Url.Content("~/Content/LoginPartial.css")" rel="stylesheet" type="text/css" />
+@if (Request.IsAuthenticated)
+{
+    
+        
+        <div class="navbar-form navbar-right">
+            <a href="">@User.Identity.Name</a>
+            @Html.ActionLink("Вийти", "Logout", "Account", null, new { @class = "btn btn-warning" })
+        </div>
+
+
+
+}
+else
+{
+    <div class="navbar-form navbar-right">
+        
+        @Html.ActionLink("Увійти", "Login", "Account", null, new { @class = "btn btn-success" })
+        @Html.ActionLink("Реєстрація", "Registration", "Account", null, new { @class = "btn btn-primary" })
+
+    </div>
+}

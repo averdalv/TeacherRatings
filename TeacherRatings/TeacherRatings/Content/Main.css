@@ -1,0 +1,59 @@
+﻿
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/*
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+    */
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+ul.nav.navbar-nav>li {
+	padding-left:30px;
+}
+ul.nav.navbar-nav>li>a:hover {
+	color:  #48D1CC;
+	transition: 1s;
+}
+
+.navbar{
+	border-color: #20B2AA;	
+    font-size: 18px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 80px;
+}
+.footer{
+	position:absolute;
+	bottom: 0;
+	width: 100%;
+	height: 80px;
+	background-color: #DCDCDC;
+}
+.footer .container {
+padding-left: 38%;
+padding-top: 20px;
+}
+.footer .container p{
+ font-size:10px;
+}
+#cyb{
+	padding-left:35%;
+}

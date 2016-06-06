@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+ }
+@using TeacherRatings.ViewModels;
+@model TeachersViewModel
+<div class="container">
+    <h2>Викладачі</h2>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="tabs">
+            <div class="container">
+                <ul class="nav nav-tabs">
+                    
+                    @foreach (var department in ViewBag.Departments)
+                    {
+                        <li><a data-ajax="true" data-toogle="tab" data-ajax-mode="replace" data-ajax-update="#AjaxPlace" href="Teachers?id=@department.DepartmentId&page=1">@department.Abbreviation<span class="badge">@department.CountTeachers</span></a></li> 
+                       @* <li>@Ajax.ActionLink((string)department.Abbreviation, "Teachers", new { id = department.DepartmentId, page = 1 }, new AjaxOptions { UpdateTargetId = "AjaxPlace" })</li>*@
+
+                    }
+                </ul>
+            </div>
+            <div id="AjaxPlace">       
+            </div>
+</div>
+</div>
+</div>
+
+@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+@Scripts.Render("~/PersonalScripts/TeachersScript.js")

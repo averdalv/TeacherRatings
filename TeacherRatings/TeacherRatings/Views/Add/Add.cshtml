@@ -1,0 +1,39 @@
+﻿@model TeacherRatings.Models.Teacher
+@using TeacherRatings.Models
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+<body>
+    <div> 
+        @using(Html.BeginForm())
+        {
+            <p>Имя преподавателя : @Html.TextBoxFor(teacher => teacher.Name)</p>
+            <p>Фамилия преподавателя : @Html.TextBoxFor(teacher => teacher.LastName)</p>
+            <p>Ссылка на фотографию : @Html.TextBoxFor(teacher => teacher.Image)</p>
+            <p>Кафедра :
+            @{
+                var context = new DataContext();
+                List<SelectListItem> list = new List<SelectListItem>();
+                foreach(var dep in context.Departments)
+                {
+                    list.Add(new SelectListItem() {Text = dep.Name.ToString(), Value = dep.DepartmentId.ToString()});
+                }
+                int i = 0;
+            }
+            @Html.DropDownListFor(ViewBag.dep, list);
+        </p>
+            <input type="submit" value="Добавить" />
+        }
+        
+    </div>
+</body>
+</html>

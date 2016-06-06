@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <title>Main</title>
+    
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet"/>
+    <link href="@Url.Content("~/Content/font-awesome.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap-theme.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Main.css")" rel="stylesheet" type="text/css" />
+    @Scripts.Render("~/Scripts/jquery-2.2.1.min.js")
+    
+</head>
+
+<body>
+        <div class="container">
+            <div class="navbar navbar-default navbar-static-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu">
+                            <span class="sr-only">Відкрити навігацію</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="responsive-menu">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/Home/Index">Головна</a></li>
+                            <li><a href="/Teacher/Teachers">Викладачі</a></li>
+                            <li><a href="#">Про нас</a></li>
+                            <li><a href="#">Допомога</a></li>
+                        </ul>
+                      @Html.Partial("LoginPartial")
+                     
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="container" id="cyb">
+            <img src="~/Pictures/cyb.jpg" alt="">
+        </div>
+        <br>
+        @RenderBody()
+        <footer class="footer">
+            <div class="container">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-square-o fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x"></i>
+                </span>
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-square-o fa-stack-2x"></i>
+                    <i class="fa fa-facebook fa-stack-1x"></i>
+                </span>
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-square-o fa-stack-2x"></i>
+                    <i class="fa fa-google fa-stack-1x"></i>
+                </span>
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-square-o fa-stack-2x"></i>
+                    <i class="fa fa-vk fa-stack-1x"></i>
+                </span>
+                <p>
+                    <i class="fa fa-copyright"></i>
+                    2016 made by Cheshulko&Reva
+                </p>
+            </div>
+        </footer>
+    
+    @Scripts.Render("~/Scripts/bootstrap.js")
+</body>
+</html>
