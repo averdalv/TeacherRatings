@@ -169,7 +169,7 @@ namespace TeacherRatings.Controllers
                     teacherPagination.Name=teacher.Name;
                     teacherPagination.LastName=teacher.LastName;
                     teacherPagination.Patronymic=teacher.Patronymic;
-                    teacherPagination.Information = teacher.Information.Substring(0,200)+"...";
+                    teacherPagination.Information = teacher.Information.Substring(0, (teacher.Information.Length < 200 ? teacher.Information.Length : 200)) + "...";
                     teacherPagination.Image=teacher.Image;
                     teacherPagination.Link=@"TeacherPage?"+"id="+teacher.TeacherId;
                     TeachPag.Add(teacherPagination);

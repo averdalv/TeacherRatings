@@ -20,9 +20,11 @@ textarea {
   text-align: center;
 }
 
+
 ul.nav.navbar-nav>li {
 	padding-left:30px;
 }
+
 ul.nav.navbar-nav>li>a:hover {
 	color:  #48D1CC;
 	transition: 1s;
@@ -48,12 +50,18 @@ body {
 	background-color: #DCDCDC;
 }
 .footer .container {
-padding-left: 38%;
-padding-top: 20px;
+   padding-top:20px;
+}
+.footer .container div {
+   width:180px;
+   margin:0 auto;
 }
 .footer .container p{
  font-size:10px;
 }
 #cyb{
-	padding-left:35%;
+    width:200px;
+    height:200px;
+    margin:0 auto;
 }
+

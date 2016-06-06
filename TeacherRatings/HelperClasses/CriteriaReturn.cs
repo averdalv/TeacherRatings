@@ -10,7 +10,7 @@ namespace TeacherRatings.HelperClasses
         public CriteriaReturn()
         {
             Criterias = new List<string>();
-            for (int i = 0; i < 12; ++i) Criterias.Add(string.Empty);
+            for (int i = 0; i < 8; ++i) Criterias.Add(string.Empty);
         }
         public int teacherId{ get; set; }
         public int subjectId{ get; set; }

@@ -195,6 +195,10 @@
     <Compile Include="Migrations\201606040425415_InformationLength.Designer.cs">
       <DependentUpon>201606040425415_InformationLength.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606060303215_User_Teacher_Evaluations.cs" />
+    <Compile Include="Migrations\201606060303215_User_Teacher_Evaluations.Designer.cs">
+      <DependentUpon>201606060303215_User_Teacher_Evaluations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ApplicationRole.cs" />
     <Compile Include="Models\ApplicationRoleManager.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -204,9 +208,11 @@
     <Compile Include="Models\Department.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DataContext.cs" />
+    <Compile Include="Models\Evaluation.cs" />
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Models\TeacherSubject.cs" />
+    <Compile Include="Models\TeacherUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\DepartmentViewModel.cs" />
     <Compile Include="ViewModels\EditViewModel.cs" />
@@ -327,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606040425415_InformationLength.resx">
       <DependentUpon>201606040425415_InformationLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606060303215_User_Teacher_Evaluations.resx">
+      <DependentUpon>201606060303215_User_Teacher_Evaluations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

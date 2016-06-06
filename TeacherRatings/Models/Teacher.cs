@@ -11,6 +11,7 @@ namespace TeacherRatings.Models
         public Teacher()
         {
             this.TeacherSubjects=new HashSet<TeacherSubject>();
+            this.TeacherUsers = new HashSet<TeacherUser>();
         }
         public int TeacherId { get; set; }
 
@@ -30,6 +31,7 @@ namespace TeacherRatings.Models
 
         public virtual Department Department{get;set;}
         public virtual ICollection<TeacherSubject> TeacherSubjects { get; set; }
+        public virtual ICollection<TeacherUser> TeacherUsers { get; set; }
 
 
     }

@@ -11,11 +11,14 @@ namespace TeacherRatings.Models
         public Subject()
         {
             this.TeacherSubjects = new HashSet<TeacherSubject>();
+            this.Evaluations = new HashSet<Evaluation>();
         }
         public int SubjectId { get; set; }
         [Required]
         [MaxLength(300)]
         public string Name { get; set; }
         public virtual ICollection<TeacherSubject> TeacherSubjects{get;set;}
+        public virtual ICollection<Evaluation> Evaluations { get; set; }
+        
     }
 }

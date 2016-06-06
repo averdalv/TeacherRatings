@@ -12,8 +12,10 @@ namespace TeacherRatings.Models
         public string City { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
+        public virtual ICollection<TeacherUser> TeacherUsers { get; set; }
         public ApplicationUser()
         {
+            this.TeacherUsers = new HashSet<TeacherUser>();
         }
     }
 }

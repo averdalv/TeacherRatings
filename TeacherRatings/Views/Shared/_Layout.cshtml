@@ -32,6 +32,7 @@
                             <li><a href="/Teacher/Teachers">Викладачі</a></li>
                             <li><a href="#">Про нас</a></li>
                             <li><a href="#">Допомога</a></li>
+                            <li><a href="#">Пошук</a></li>
                         </ul>
                       @Html.Partial("LoginPartial")
                      
@@ -40,33 +41,35 @@
 
             </div>
         </div>
-        <div class="container" id="cyb">
-            <img src="~/Pictures/cyb.jpg" alt="">
+        <div class="container" id="cyb">           
+                <img id="cybInner" src="~/Pictures/cyb.jpg" alt="">     
         </div>
         <br>
         @RenderBody()
         <footer class="footer">
             <div class="container">
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-square-o fa-stack-2x"></i>
-                    <i class="fa fa-twitter fa-stack-1x"></i>
-                </span>
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-square-o fa-stack-2x"></i>
-                    <i class="fa fa-facebook fa-stack-1x"></i>
-                </span>
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-square-o fa-stack-2x"></i>
-                    <i class="fa fa-google fa-stack-1x"></i>
-                </span>
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-square-o fa-stack-2x"></i>
-                    <i class="fa fa-vk fa-stack-1x"></i>
-                </span>
-                <p>
-                    <i class="fa fa-copyright"></i>
-                    2016 made by Cheshulko&Reva
-                </p>
+                <div >
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-twitter fa-stack-1x"></i>
+                    </span>
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-facebook fa-stack-1x"></i>
+                    </span>
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-google fa-stack-1x"></i>
+                    </span>
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-vk fa-stack-1x"></i>
+                    </span>
+                    <p>
+                        <i class="fa fa-copyright"></i>
+                        2016 made by Cheshulko&Reva
+                    </p>
+                </div>
             </div>
         </footer>
     
