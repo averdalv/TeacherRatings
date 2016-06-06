@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "CommonTeacherPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="@Url.Content("~/Content/TeacherPage.css")" rel="stylesheet" type="text/css" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-lg-4 col-md-5 col-sm-6">
+            <div class="container-fluid">
+                <br>
+                <div>
+                    <img src="http://placehold.it/320x240" alt="">
+                </div>
+                <br>
+                <div id="belowFoto">
+                    <a href="/Teacher/TeacherPage" class="btn btn-primary">Статистика</a>
+                    <a href="/Teacher/Value?teacherId=1&subjectId=1" class="btn btn-primary">Оцінити викладача</a>
+                    <div id="thumbsUp">
+                        <i class="fa fa-thumbs-o-up fa-2x" aria-hidden="true"></i> <span>4</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col-xs-12 col-lg-8 col-md-7 col-sm-6">
+            <h2>Прізвище Ім'я</h2>
+            <h4>Кафедра {назва кафедри}</h4>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut cumque debitis saepe porro commodi! Dolorum excepturi quam debitis. Officiis voluptas odio, accusantium eum molestiae ea eos repellendus illo voluptates quasi!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate hic laboriosam, optio inventore, dolore consequatur expedita amet nemo, est, voluptate totam. Exercitationem, facilis a, incidunt quisquam cupiditate tenetur eligendi molestiae.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut cumque debitis saepe porro commodi! Dolorum excepturi quam debitis. Officiis voluptas odio, accusantium eum molestiae ea eos repellendus illo voluptates quasi!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate hic laboriosam, optio inventore, dolore consequatur expedita amet nemo, est, voluptate totam. Exercitationem, facilis a, incidunt quisquam cupiditate tenetur eligendi molestiae.
+            </p>
+            <hr>
+            <div class="container-fluid">
+                <div class="row">
+                    <h2>Оцінки</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    <div class="tabs">
+
+                        <ul class="nav nav-tabs" id="tabRating">
+                            <li class="active"><a href="#firstTab" data-toggle="tab">Цікавість викладання</a></li>
+                            <li><a href="#secondTab" data-toggle="tab">Зрозумілість викладання</a></li>
+                            <li><a href="#thirdTab" data-toggle="tab">Об'єктивність оцінювання</a></li>
+                            <li><a href="#fourthTab" data-toggle="tab">Підготовленість викладача</a></li>
+                            <li><a href="#fifthTab" data-toggle="tab">Значення дисципліни</a></li>
+                            <li><a href="#sixthTab" data-toggle="tab">Ставлення до студентів</a></li> 
+                            <li><a href="#seventhTab" data-toggle="tab">Вимогливість викладача</a></li>
+                            <li><a href="#eighthTab" data-toggle="tab">Відвідування пар студентами</a></li>
+                        </ul>
+
+   @RenderBody()

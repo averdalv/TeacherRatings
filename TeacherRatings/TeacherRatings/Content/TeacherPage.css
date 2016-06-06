@@ -1,0 +1,108 @@
+﻿hr{
+	border-color:#20B2AA;
+}
+#thumbsUp
+{
+	float:right;
+}
+#thumbsUp span
+{
+	font-size: 20px;
+}
+
+#belowFoto{
+	width: 320px;
+}
+ul.nav.nav-tabs>li{
+	font-size: 12px;
+}
+
+path.slice{
+  stroke-width:2px;
+}
+polyline{
+  opacity: .3;
+  stroke: black;
+  stroke-width: 2px;
+  fill: none;
+} 
+svg text.percent{
+  fill:white;
+  text-anchor:middle;
+  font-size:12px;
+}
+
+#oneRating{
+	display: inline-block;
+  width: 12px;
+	height: 12px;
+	background: #3366CC;
+}
+#twoRating{
+	display: inline-block;
+  width: 12px;
+	height: 12px;
+	background: #DC3912;
+}
+#threeRating{
+	display: inline-block;
+  width: 12px;
+	height: 12px;
+	background: #FF9900;
+}
+#fourRating{
+	display: inline-block;
+  width: 12px;
+	height: 12px;
+	background: #109618;
+}
+#fiveRating{
+	display: inline-block;
+  width: 12px;
+	height: 12px;
+	background: #990099;
+}
+.voices{
+	float: right;
+}
+textarea#comment{
+	max-width: 100%;
+	width: 100%;
+	max-height: 170px;
+
+}
+div.commentInner{
+	position: relative;
+	border :1px solid #20B2AA;
+}
+div.commentText{
+	position: absolute;
+  padding-left: 2px;
+  top: 15px;
+  left:68px;
+
+}
+div.likes{
+	position:absolute;
+	top:0px;
+	left:65px;
+}
+.plus{
+	font-size: 15px;
+	color:  #008000
+}
+.minus{
+	font-size: 15px;
+	color:#FF0000;
+}
+.commentDate{
+	position: absolute;
+	top: 2px;
+	right: 4px;
+}
+.response{
+	position: absolute;
+	bottom: 2px;
+	right: 4px;
+	font-size: 11px;
+}
