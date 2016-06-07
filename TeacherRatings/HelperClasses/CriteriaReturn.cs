@@ -11,12 +11,12 @@ namespace TeacherRatings.HelperClasses
         {
             Criterias = new List<string>();
             for (int i = 0; i < 8; ++i) Criterias.Add(string.Empty);
+            SubjectId = string.Empty;
+            UserId = string.Empty;
         }
-        public int teacherId{ get; set; }
-        public int subjectId{ get; set; }
-        public string userId { get; set; }
+        public string TeacherId{ get; set; }
+        public string UserId { get; set; }
         public List<string> Criterias { get; set; }
-
         public string SubjectId { get; set; }
     }
 }

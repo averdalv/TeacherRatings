@@ -7,9 +7,11 @@
     Layout = "~/Views/Shared/CommonTeacherPage.cshtml";
 }
 <div>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Value", "Teacher", FormMethod.Post))
     {
 
+        <input type="hidden" name="UserId" value="@Model.UserId">
+        <input type="hidden" name="TeacherId" value="@Model.TeacherId">
         <div class="funkyradio">
 
             @foreach (var sub in ViewBag.Subjects)
@@ -24,7 +26,7 @@
         </div>
 
         <br>
-        int i = 1;
+        int i = 0;
         <div>
 
             @foreach (var cr in ViewBag.Criterias)
@@ -59,7 +61,6 @@
         </div>
 
 
-        <input type="submit" class="btn btn-primary" value="Додать" />
+        <input type="submit" value="Добавить" />
     }
 </div>
-
