@@ -329,5 +329,18 @@ namespace TeacherRatings.Controllers
            
 
         }
+        public ActionResult Search()
+        {
+            return View();
+        }
+
+        public ActionResult PartialSearch(string search)
+        {
+            var context = new DataContext();
+            ViewBag.search = search;
+            var teacher = context.Teachers.Where(t => t.Name.Contains(search) || t.LastName.Contains(search)||t.Patronymic.Contains(search)).ToList();
+            return PartialView("PartialSearch",teacher);
+        }
+
 	}
 }

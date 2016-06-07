@@ -5,6 +5,11 @@
 <link href="@Url.Content("~/Content/TeacherPage.css")" rel="stylesheet" type="text/css" />
 
 <div class="container">
+    <div class="alert alert-success">@ViewBag.Message</div>
+</div>
+
+<br />
+<div class="container">
     <div class="row">
         <div class="col-xs-12 col-lg-4 col-md-5 col-sm-6">
             <div class="container-fluid">
@@ -17,7 +22,7 @@
                     <a href="/Teacher/TeacherPage/@ViewBag.Teacher.TeacherId" class="btn btn-primary">Статистика</a>
                     <a href="/Teacher/Value?teacherId=@ViewBag.Teacher.TeacherId" class="btn btn-primary">Оцінити викладача</a>
                     <div id="thumbsUp">
-                        <i class="fa fa-thumbs-o-up fa-2x" aria-hidden="true"></i> <span>4</span>
+                        <a href="#"><i class="fa fa-thumbs-o-up fa-2x" aria-hidden="true"></i></a> <span>4</span>
                     </div>
 
                 </div>
@@ -46,3 +51,29 @@
     </div>
 </div>
 <br>
+<script>
+
+    $(function () {
+
+        var elem = $(".alert.alert-success");
+        var mess = elem.text();
+        if (!mess) elem.css("display", "none");
+        else elem.css("display", "block");
+        $("#thumbsUp a").bind("click", function () {
+            var val=+$("#thumbsUp span").text();
+            if ($("#thumbsUp a i").hasClass("fa-thumbs-o-up")) {
+                $("#thumbsUp a i").removeClass("fa-thumbs-o-up");
+                $("#thumbsUp a i").addClass("fa-thumbs-up");
+                val++;
+                $("#thumbsUp span").text(val);
+            }
+            else {
+                $("#thumbsUp a i").removeClass("fa-thumbs-up");
+                $("#thumbsUp a i").addClass("fa-thumbs-o-up");
+                val--;
+                $("#thumbsUp span").text(val);
+            }
+        })
+    })
+
+</script>

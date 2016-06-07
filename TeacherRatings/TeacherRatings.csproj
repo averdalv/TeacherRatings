@@ -230,6 +230,7 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\LoginPartial.css" />
+    <Content Include="Content\PartialSearch.css" />
     <Content Include="Content\Registration.css" />
     <Content Include="Content\RadioValue.css" />
     <Content Include="Content\TeacherPage.css" />
@@ -299,6 +300,8 @@
     <Content Include="Views\Shared\LoginPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Teacher\TeachersPartial.cshtml" />
+    <Content Include="Views\Teacher\Search.cshtml" />
+    <Content Include="Views\Teacher\PartialSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605190159198_Init.resx">

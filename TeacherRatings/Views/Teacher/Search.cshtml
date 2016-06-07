@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="row">
+       
+        <div class="input-group">
+            <input type="text" class="form-control" name="search" placeholder="Пошук">
+            <span class="input-group-btn">
+                
+                <a data-ajax="true" data-ajax-loading="loading" data-ajax-success="onSuccess" data-ajax-mode="replace" data-ajax-update="#searchResult" class="btn btn-primary" href=""><i class="fa fa-search" aria-hidden="true"></i>Знайти</a>
+            </span>
+        </div>
+        <div id="load" ><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
+<span class="sr-only">Загрузка...</span></div>
+        <div id="searchResult"></div>
+
+    </div>
+</div>
+@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+<script>
+    $(function () {
+        $("#load").css("display", "none");
+        $(".input-group-btn a").bind("click", function () {
+            var value = $("input.form-control").val();
+            var path = "PartialSearch/?search=" + value;
+            $(this).attr("href", path).click();
+            
+        })
+    })
+    function loading(data) {
+        $("#load").css("display", "block");
+    }
+    function onSuccess(data){
+        $("#load").css("display", "none");
+    }
+    </script>

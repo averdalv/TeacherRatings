@@ -1,0 +1,10 @@
+﻿
+div.searchInner{
+    position:relative;
+    border :1px solid #20B2AA;
+}
+div.searchInf{
+    position:absolute;
+    top:20px;
+    left:320px;
+}

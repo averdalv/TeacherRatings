@@ -1,0 +1,26 @@
+﻿
+@using TeacherRatings.Models
+@model IEnumerable<Teacher>
+
+<link href="@Url.Content("~/Content/PartialSearch.css")" rel="stylesheet" type="text/css" />
+@foreach(var teacher in Model)
+{
+    <hr>
+    
+    <div class="searchInner">
+        <div class="img">
+            <img src="@teacher.Image" alt="" />
+        </div> 
+        <div class="searchInf">
+            <h2><a href="TeacherPage/@teacher.TeacherId">@teacher.LastName  @teacher.Name</a></h2>
+        </div>
+     </div>
+    
+    
+}
+@if(Model==null)
+{
+    <div>За запитом @ViewBag.search нічого не знайдено</div>
+}
+
+@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
