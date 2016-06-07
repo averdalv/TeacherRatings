@@ -64,8 +64,13 @@
         <input type="submit" class="btn btn-primary" value="Додать" />
     }
 </div>
+<div class="alert alert-success">@ViewBag.Message</div>
 <script>
     $(function () {
         $("#subjects input").first().attr("checked", true);
     })
+    var elem=$(".alert.alert-success");
+    var mess = elem.text();
+    if (!mess) elem.css("display", "none");
+    else elem.css("display", "block");
 </script>

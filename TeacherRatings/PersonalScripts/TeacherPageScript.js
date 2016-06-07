@@ -16,8 +16,12 @@
     Donut3D.draw("quotesDonut", initData(), 450, 150, 130, 100, 30, 0);
     var str = "Всього голосів: " + $("#CountVoices").text();
     $("#firstVoices").append(str);
-    $("#tabRating").first().addClass("active");
-
+    $("#tabRating li").first().addClass("active");
+    $("#tabRating li").bind("click", function () {
+        $("#tabRating li.active").removeClass("active");
+        $(this).toggleClass("active");
+        $("#tabRating li.active a").click();
+    });
 function changeData() {
     Donut3D.transition("quotesDonut", AjaxData(), 130, 100, 30, 0);
 }

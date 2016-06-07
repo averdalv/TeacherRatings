@@ -89,8 +89,26 @@ namespace TeacherRatings.Controllers
         {
             Statistics stat = new Statistics();
             stat.Update(crRet);
-
-            return RedirectToAction("Index", "Home");
+            var context=new DataContext();
+            ViewBag.Teacher = context.Teachers.Where(t => t.TeacherId.ToString() == crRet.TeacherId).First();
+            var dep = context.Teachers.Where(p => p.TeacherId.ToString() == crRet.TeacherId).Select(p => p.Department.Name).First();
+            ViewBag.Department = dep;
+            var teacher=context.Teachers.Where(t=>t.TeacherId.ToString()==crRet.TeacherId).First();
+            List<Subject> Sub = new List<Subject>();
+            List<int> subjId = (from c in context.TeacherSubjects
+                                where c.TeacherId.ToString() == crRet.TeacherId
+                                select c.SubjectId).ToList();
+            Sub.AddRange((from c in context.Subjects
+                          where subjId.Contains(c.SubjectId)
+                          select c).ToList());
+            ViewBag.Subjects = Sub;
+            ViewBag.Criterias = new List<string>();
+            foreach (var criteria in context.CriteriaStrings)
+            {
+                ViewBag.Criterias.Add(criteria.CriteriaText);
+            }
+            ViewBag.Message = "Оцінки викладачу " + teacher.Name + " " + teacher.LastName + " додано!";
+            return View(crRet);
         }
        
         public ActionResult TeacherPage(int id)

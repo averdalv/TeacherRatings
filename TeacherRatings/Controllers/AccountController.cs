@@ -59,15 +59,15 @@ namespace TeacherRatings.Controllers
         }
 
 
-        public ActionResult Login()
+        public ActionResult Login(string returnUrl)
         {
-            
+            ViewBag.returnUrl = returnUrl;
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model)
+        public async Task<ActionResult> Login(LoginViewModel model,string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -85,8 +85,9 @@ namespace TeacherRatings.Controllers
                     {
                         IsPersistent = true
                     }, claim);
-                        
+                        if(String.IsNullOrEmpty(returnUrl))
                         return RedirectToAction("Index", "Home");
+                        return Redirect(returnUrl);
                 }
             }
             return View(model);
@@ -94,7 +95,7 @@ namespace TeacherRatings.Controllers
         public ActionResult Logout()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login");
         }
     }
 }
