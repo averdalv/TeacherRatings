@@ -112,7 +112,11 @@ namespace TeacherRatings.Controllers
             }
 
             CriteriaReturn crRet = new CriteriaReturn();
+<<<<<<< HEAD
             crRet.TeacherId = teacherId.ToString();
+=======
+            crRet.TeacherId= teacherId.ToString();
+>>>>>>> 8aa292a2418f6a15a4601d40fe8e2cba0b582532
             crRet.UserId = UserId;
             return View(crRet);
         }

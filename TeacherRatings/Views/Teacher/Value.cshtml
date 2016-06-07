@@ -7,12 +7,21 @@
     Layout = "~/Views/Shared/CommonTeacherPage.cshtml";
 }
 <div>
+<<<<<<< HEAD
     @using (Html.BeginForm("Value", "Teacher", FormMethod.Post))
     {
 
         <input type="hidden" name="UserId" value="@Model.UserId">
         <input type="hidden" name="TeacherId" value="@Model.TeacherId">
         <div class="funkyradio">
+=======
+        @using (Html.BeginForm("Value", "Teacher", FormMethod.Post))
+{
+
+    <input type="hidden" name="UserId" value="@Model.UserId">
+    <input type="hidden" name="TeacherId" value="@Model.TeacherId">
+    <div class="funkyradio">
+>>>>>>> 8aa292a2418f6a15a4601d40fe8e2cba0b582532
 
             @foreach (var sub in ViewBag.Subjects)
             {
@@ -63,4 +72,9 @@
 
         <input type="submit" value="Добавить" />
     }
+<<<<<<< HEAD
 </div>
+=======
+</div>
+
+>>>>>>> 8aa292a2418f6a15a4601d40fe8e2cba0b582532
