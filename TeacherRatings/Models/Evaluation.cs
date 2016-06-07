@@ -21,14 +21,10 @@ namespace TeacherRatings.Models
         public int Insistence { get; set; }
         public int ObjectivityAssessment { get; set; }
         public int Visit { get; set; }
-
-        public int SubjectId{get;set;}
-         [ForeignKey("SubjectId")]
-        public virtual Subject Subject { get;set;}
-         public virtual ICollection<TeacherUser> TeacherUsers { get; set; }
-         public Evaluation()
-         {
-             this.TeacherUsers = new HashSet<TeacherUser>();
-         }
+        public virtual ICollection<TeacherUser> TeacherUsers { get; set; }
+        public Evaluation()
+        {
+            this.TeacherUsers = new HashSet<TeacherUser>();
+        }
     }
 }

@@ -15,6 +15,10 @@ namespace TeacherRatings.Models
         public string UserId { get; set; }
         public int EvaluationId { get; set; }
 
+        public int SubjectId { get; set; }
+
+        [ForeignKey("SubjectId")]
+        public virtual Subject Subject { get; set; }
         [ForeignKey("TeacherId")]
         public virtual Teacher Teacher { get; set; }
         [ForeignKey("UserId")]

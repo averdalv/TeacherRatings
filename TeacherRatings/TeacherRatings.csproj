@@ -199,6 +199,10 @@
     <Compile Include="Migrations\201606060303215_User_Teacher_Evaluations.Designer.cs">
       <DependentUpon>201606060303215_User_Teacher_Evaluations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606071644189_Rebuild_Evaluation.cs" />
+    <Compile Include="Migrations\201606071644189_Rebuild_Evaluation.Designer.cs">
+      <DependentUpon>201606071644189_Rebuild_Evaluation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ApplicationRole.cs" />
     <Compile Include="Models\ApplicationRoleManager.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -336,6 +340,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606060303215_User_Teacher_Evaluations.resx">
       <DependentUpon>201606060303215_User_Teacher_Evaluations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606071644189_Rebuild_Evaluation.resx">
+      <DependentUpon>201606071644189_Rebuild_Evaluation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

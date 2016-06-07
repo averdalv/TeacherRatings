@@ -55,6 +55,9 @@ namespace TeacherRatings.Controllers
         {  
 
             var context = new DataContext();
+
+            //bool alreadyValued = (from c in context.)
+
             ViewBag.Teacher = context.Teachers.Where(t => t.TeacherId == teacherId).First();
             var dep = context.Teachers.Where(p=>p.TeacherId==teacherId).Select(p => p.Department.Name).First();
             ViewBag.Department = dep;
@@ -62,7 +65,11 @@ namespace TeacherRatings.Controllers
                              where c.Email == HttpContext.User.Identity.Name
                              select c.Id).First();
 
-            
+           // List<int> idSubjectsAlreadyValuedForThisUser = new List<int>();
+           // idSubjectsAlreadyValuedForThisUser.AddRange((
+            //    from c in context.
+            // //   ))
+
             ViewBag.Criterias = new List<string>();
             List<int> subjId = (from c in context.TeacherSubjects
                                 where c.TeacherId == teacherId
