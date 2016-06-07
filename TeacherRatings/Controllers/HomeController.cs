@@ -14,9 +14,7 @@ namespace TeacherRatings.Controllers
             
          
 
-<<<<<<< HEAD
        
-=======
             //Subject s1 = new Subject();
             //s1.Name = "Мат. аналіз";
             //Subject s2 = new Subject();
@@ -50,9 +48,6 @@ namespace TeacherRatings.Controllers
 
 
 
-            var t = context.Teachers;
-            ViewBag.Teachers = t.ToList();  
->>>>>>> 8aa292a2418f6a15a4601d40fe8e2cba0b582532
             return View();
         }        
     }

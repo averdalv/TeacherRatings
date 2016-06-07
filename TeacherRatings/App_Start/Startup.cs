@@ -26,6 +26,7 @@ namespace TeacherRatings
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Account/Login"),
+                
             });
         }
     }

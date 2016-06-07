@@ -7,26 +7,17 @@
     Layout = "~/Views/Shared/CommonTeacherPage.cshtml";
 }
 <div>
-<<<<<<< HEAD
     @using (Html.BeginForm("Value", "Teacher", FormMethod.Post))
     {
 
         <input type="hidden" name="UserId" value="@Model.UserId">
         <input type="hidden" name="TeacherId" value="@Model.TeacherId">
         <div class="funkyradio">
-=======
-        @using (Html.BeginForm("Value", "Teacher", FormMethod.Post))
-{
-
-    <input type="hidden" name="UserId" value="@Model.UserId">
-    <input type="hidden" name="TeacherId" value="@Model.TeacherId">
-    <div class="funkyradio">
->>>>>>> 8aa292a2418f6a15a4601d40fe8e2cba0b582532
-
+            <h2>Предмети</h2>
             @foreach (var sub in ViewBag.Subjects)
             {
 
-                <div class="funkyradio-primary">
+                <div class="funkyradio-primary" id="subjects">
                     <input type="radio" name="SubjectId" id="radio(@sub.SubjectId)" value="@sub.SubjectId" />
                     <label for="radio(@sub.SubjectId)">@sub.Name</label>
                 </div>
@@ -70,11 +61,11 @@
         </div>
 
 
-        <input type="submit" value="Добавить" />
+        <input type="submit" class="btn btn-primary" value="Додать" />
     }
-<<<<<<< HEAD
 </div>
-=======
-</div>
-
->>>>>>> 8aa292a2418f6a15a4601d40fe8e2cba0b582532
+<script>
+    $(function () {
+        $("#subjects input").first().attr("checked", true);
+    })
+</script>

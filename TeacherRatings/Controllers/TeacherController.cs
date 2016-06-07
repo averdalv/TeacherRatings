@@ -31,9 +31,9 @@ namespace TeacherRatings.Controllers
 
         }
 
-        //Вызывается когда была нажата кнопка "добавить" в форме добавления препод.
+       
         [HttpPost]
-        //[NonAction]
+        
         public string Add(Teacher teacher, int Department_DepartmentId)
         {
             var context = new DataContext();
@@ -48,54 +48,21 @@ namespace TeacherRatings.Controllers
             return "DYAKUYU";
         }
 
-        //Передаем конкретного препода и смотрим краткую инфу по ему и заполняем пердметы 
+       
         [HttpGet]
+        [Authorize]
         public ActionResult Value(int teacherId)
         {  
 
             var context = new DataContext();
-
-            //ApplicationUserManager appMan = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            //ApplicationUser appUser = appMan.FindAsync();
+            ViewBag.Teacher = context.Teachers.Where(t => t.TeacherId == teacherId).First();
+            var dep = context.Teachers.Where(p=>p.TeacherId==teacherId).Select(p => p.Department.Name).First();
+            ViewBag.Department = dep;
             string UserId = (from c in context.Users
                              where c.Email == HttpContext.User.Identity.Name
                              select c.Id).First();
 
-            //TeacherSubject tc = new TeacherSubject();
-            //tc.TeacherId = 1;
-            //tc.SubjectId = 1;
-
-            //Criteria cr = new Criteria();
-            //cr.Accessibility = "1";
-            //cr.ClarityImportance = "4";
-            //cr.CommunicationDisciplines = "1";
-            //cr.ImproveMySkills = "5";
-            //cr.Interest = "1";
-            //cr.ObjectivityAssessment = "5";
-            //cr.Preparedness = "1";
-            //cr.Ratio = "4";
-            //cr.Insistence = "4";
-            //cr.Visit = "5";
-            //cr.Enthusiasm = "1";
-            //cr.Examples = "5";
-           // cr.TeacherSubject = tc;
-
-           // context.TeacherSubjects.Add(tc);
-           // context.Criterias.Add(cr);
-           // context.SaveChanges();
-
-
-
-           // context.Criterias.Add(cr);
-          //  context.SaveChanges();
-            //Оценим предмет с ад = 1
-            //var criteria = (from el in context.TeacherSubjects
-            //                where (el.TeacherId == teacherId && el.SubjectId == 1)
-            //                select el.Criteria);
-
-
-            //Ne Ok. Потом переделаю. Для дебага пойдет / В базе будет потом
-            //List<string> list = new List<string>();
+            
             ViewBag.Criterias = new List<string>();
             List<int> subjId = (from c in context.TeacherSubjects
                                 where c.TeacherId == teacherId
@@ -112,11 +79,7 @@ namespace TeacherRatings.Controllers
             }
 
             CriteriaReturn crRet = new CriteriaReturn();
-<<<<<<< HEAD
-            crRet.TeacherId = teacherId.ToString();
-=======
-            crRet.TeacherId= teacherId.ToString();
->>>>>>> 8aa292a2418f6a15a4601d40fe8e2cba0b582532
+            crRet.TeacherId = teacherId.ToString(); 
             crRet.UserId = UserId;
             return View(crRet);
         }
@@ -133,6 +96,8 @@ namespace TeacherRatings.Controllers
         public ActionResult TeacherPage(int id)
         {
              var context = new DataContext();
+             var dep = context.Teachers.Where(p => p.TeacherId == id).Select(p => p.Department.Name).First();
+             ViewBag.Department = dep;
              int[] voices = new int[] { 0, 0, 0, 0, 0 };
              int countVoices = 0;
              var teach = context.Teachers.Where(p => p.TeacherId == id).First();

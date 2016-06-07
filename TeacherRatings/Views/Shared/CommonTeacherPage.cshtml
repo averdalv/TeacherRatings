@@ -10,12 +10,12 @@
             <div class="container-fluid">
                 <br>
                 <div>
-                    <img src="http://placehold.it/320x240" alt="">
+                    <img src="@ViewBag.Teacher.Image" alt="">
                 </div>
                 <br>
                 <div id="belowFoto">
                     <a href="/Teacher/TeacherPage" class="btn btn-primary">Статистика</a>
-                    <a href="/Teacher/Value?teacherId=2" class="btn btn-primary">Оцінити викладача</a>
+                    <a href="/Teacher/Value?teacherId=@ViewBag.Teacher.TeacherId" class="btn btn-primary">Оцінити викладача</a>
                     <div id="thumbsUp">
                         <i class="fa fa-thumbs-o-up fa-2x" aria-hidden="true"></i> <span>4</span>
                     </div>
@@ -25,19 +25,24 @@
             </div>
         </div>
         <div class="col-xs-12 col-lg-8 col-md-7 col-sm-6">
-            <h2>Name</h2>
-            <h4>Кафедра {назва кафедри}</h4>
+            <h2>@ViewBag.Teacher.LastName</h2>
+            <h2>@ViewBag.Teacher.Name @ViewBag.Teacher.Patronymic </h2>
+            <h3>Кафедра: @ViewBag.Department</h3>
+            <br />
+            <h3>Предмети:</h3>
+            @foreach (var s in ViewBag.Subjects)
+            {
+                <p>@s.Name</p>
+            }
+            <h3>Інформація</h3>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut cumque debitis saepe porro commodi! Dolorum excepturi quam debitis. Officiis voluptas odio, accusantium eum molestiae ea eos repellendus illo voluptates quasi!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate hic laboriosam, optio inventore, dolore consequatur expedita amet nemo, est, voluptate totam. Exercitationem, facilis a, incidunt quisquam cupiditate tenetur eligendi molestiae.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut cumque debitis saepe porro commodi! Dolorum excepturi quam debitis. Officiis voluptas odio, accusantium eum molestiae ea eos repellendus illo voluptates quasi!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate hic laboriosam, optio inventore, dolore consequatur expedita amet nemo, est, voluptate totam. Exercitationem, facilis a, incidunt quisquam cupiditate tenetur eligendi molestiae.
+                @ViewBag.Teacher.Information
             </p>
             <hr>
-         
-   @RenderBody()
 
-</div>
-</div>
+            @RenderBody()
+
+        </div>
+    </div>
 </div>
 <br>

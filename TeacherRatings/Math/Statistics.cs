@@ -20,13 +20,21 @@ namespace TeacherRatings.Math
             var criteria = (from row in context.TeacherSubjects
                             where (row.TeacherId == teacherId && row.SubjectId == subjectId)
                             select row.Criteria).First();
+            criteria.Preparedness += " ";
             criteria.Preparedness += crRet.Criterias[0];
+            criteria.Interest += " ";
             criteria.Interest += crRet.Criterias[1];
-            criteria.Accessibility += crRet.Criterias[2];                
-            criteria.ClarityImportance += crRet.Criterias[3];           
+            criteria.Accessibility += " "; 
+            criteria.Accessibility += crRet.Criterias[2];
+            criteria.ClarityImportance += " "; 
+            criteria.ClarityImportance += crRet.Criterias[3];
+            criteria.Ratio += " ";
             criteria.Ratio += crRet.Criterias[4];
+            criteria.Insistence +=" ";
             criteria.Insistence += crRet.Criterias[5];
+            criteria.ObjectivityAssessment += " ";
             criteria.ObjectivityAssessment += crRet.Criterias[6];
+            criteria.Visit += " ";
             criteria.Visit += crRet.Criterias[7];
             criteria.TeacherSubject = (from row in context.TeacherSubjects
                                        where (row.TeacherId == teacherId && row.SubjectId == subjectId)
