@@ -1,7 +1,8 @@
 ﻿@{
     Layout = "~/Views/Shared/CommonTeacherPage.cshtml";
 }
-
+@using TeacherRatings.ViewModels;
+@model TeacherPageViewModel
 <div class="container-fluid">
     <div class="row">
         <h2>Оцінки</h2>
@@ -11,8 +12,8 @@
 <div class="row">
     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
         <div class="tabs">
-
-            <ul class="nav nav-tabs" id="tabRating">
+         
+            @*<ul class="nav nav-tabs" id="tabRating">
                 <li class="active"><a href="#firstTab" data-toggle="tab">Цікавість викладання</a></li>
                 <li><a href="#secondTab" data-toggle="tab">Зрозумілість викладання</a></li>
                 <li><a href="#thirdTab" data-toggle="tab">Об'єктивність оцінювання</a></li>
@@ -21,10 +22,38 @@
                 <li><a href="#sixthTab" data-toggle="tab">Ставлення до студентів</a></li>
                 <li><a href="#seventhTab" data-toggle="tab">Вимогливість викладача</a></li>
                 <li><a href="#eighthTab" data-toggle="tab">Відвідування пар студентами</a></li>
-            </ul>
+            </ul>*@
 
+            <ul class="nav nav-tabs" id="tabRating">
+                @foreach (var cr in ViewBag.Criterias)
+                {
+                    <li><a href="TeacherPageJson/?teacherid=@ViewBag.Teacher.TeacherId&criterianame=@cr.CriteriaName" data-toggle="tab" data-ajax="true" data-ajax-success="OnSuccess">@cr.CriteriaText</a></li>
+                }
+            </ul>
             <div class="tab-content">
-                <div class="tab-pane  in active" id="firstTab">
+                <div id="initSvg" style="display:none">
+                    <p id="CountVoices">@Model.CountVoices</p>
+                    <p id="voice1">@Model.voices[0]</p>
+                    <p id="voice2">@Model.voices[1]</p>
+                    <p id="voice3">@Model.voices[2]</p>
+                    <p id="voice4">@Model.voices[3]</p>
+                    <p id="voice5">@Model.voices[4]</p>
+                </div>
+                <div id="PartialTab">
+                    <div class="tab-pane  in active" id="firstTab">
+                        <div>
+                            <span><span id="oneRating"></span>-1</span>
+                            <span><span id="twoRating"></span>-2</span>
+                            <span><span id="threeRating"></span>-3</span>
+                            <span><span id="fourRating"></span>-4</span>
+                            <span><span id="fiveRating"></span>-5</span>
+                            <span id="firstVoices" class="voices"></span>
+                        </div>
+
+                    </div>
+                </div>
+
+              <!--  <div class="tab-pane  in active" id="firstTab">
                     <div>
                         <span><span id="oneRating"></span>-1</span>
                         <span><span id="twoRating"></span>-2</span>
@@ -119,6 +148,7 @@
                     </div>
 
                 </div>
+                  -->
                 <div id="TabSvg">
 
                 </div>
@@ -206,7 +236,7 @@
 </div>
 
 
-
+@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
 @Scripts.Render("~/Scripts/d3.js")
 @Scripts.Render("~/PersonalScripts/Donat3D.js")
 @Scripts.Render("~/PersonalScripts/TeacherPageScript.js")

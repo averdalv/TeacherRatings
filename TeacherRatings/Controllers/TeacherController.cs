@@ -128,27 +128,169 @@ namespace TeacherRatings.Controllers
        
         public ActionResult TeacherPage(int id)
         {
-            return View();
+             var context = new DataContext();
+             int[] voices = new int[] { 0, 0, 0, 0, 0 };
+             int countVoices = 0;
+             var teach = context.Teachers.Where(p => p.TeacherId == id).First();
+             ViewBag.Teacher = teach;
+             TeacherPageViewModel tpVM = new TeacherPageViewModel();
+             var subteachQuery = context.TeacherSubjects.Where(t => t.TeacherId == teach.TeacherId).ToList();    
+             var subteach = subteachQuery.Select(s => s.Subject).ToList();
+             ViewBag.Subjects = subteach;
+             var criteriaString = context.CriteriaStrings.ToList();
+             ViewBag.Criterias = criteriaString;
+            string[] criterias={};
+            List<string> criteriaAll=new List<string>(); 
+            if (subteachQuery.Count != 0)
+            {
+                criteriaAll = subteachQuery.Select(c => c.Criteria.Interest).ToList();
+                
+            }
+            foreach(var crAll in criteriaAll){
+                criterias = crAll.Split(new Char[] { ' ' });
+             for (int i = 0; i < criterias.Length;i++ )
+             {
+                 switch(Int32.Parse(criterias[i]))
+                 {
+                     case 1: 
+                         { 
+                             voices[0]++;
+                             break;
+                         }
+                     case 2:
+                         {
+                             voices[1]++;
+                             break;
+                         }
+                     case 3:
+                         {
+                             voices[2]++;
+                             break;
+                         }
+                     case 4:
+                         {
+                             voices[3]++;
+                             break;
+                         }
+                     case 5:
+                         {
+                             voices[4]++;
+                             break;
+                         }
+                 }
+                 countVoices++;
+
+             }
+            }
+             tpVM.CountVoices = countVoices;
+             tpVM.voices = voices;
+            
+            return View(tpVM);
         }
-       /* public ActionResult Teachers()
+        public JsonResult TeacherPageJson(int teacherid,string criterianame)
         {
             var context = new DataContext();
-            var departments = context.Departments.ToList();
-            List<DepartmentViewModel> departmentVM = new List<DepartmentViewModel>();
-            foreach (var d in departments)
+            TeacherPageViewModel tpVM = new TeacherPageViewModel();
+            int[] voices = new int[] { 0, 0, 0, 0, 0 };
+            int countVoices = 0;
+            var teach = context.Teachers.Where(p => p.TeacherId == teacherid).First();
+            var subteachQuery = context.TeacherSubjects.Where(t => t.TeacherId ==teacherid).ToList();
+            string[] criterias = { };
+            List<string> criteriaAll = new List<string>();
+            if (subteachQuery.Count != 0)
             {
-                DepartmentViewModel dvm = new DepartmentViewModel();
-                dvm.Name = d.Name;
-                dvm.DepartmentId = d.DepartmentId;
-                dvm.Abbreviation = d.Abbreviation;
+                 switch(criterianame)
+                {
+                    case "Interest":
+                        {
+                            criteriaAll = subteachQuery.Select(c => c.Criteria.Interest).ToList();
+                            break;
+                        }
+                    case "Accessibility":
+                        {
+                            criteriaAll = subteachQuery.Select(c => c.Criteria.Accessibility).ToList();
+                            break;
+                        }
+                    case "ObjectivityAssessment":
+                        {
+                            criteriaAll = subteachQuery.Select(c => c.Criteria.ObjectivityAssessment).ToList();
+                            break;
+                        }
+                             
+                    case "Preparedness":
+                        {
+                            criteriaAll = subteachQuery.Select(c => c.Criteria.Preparedness).ToList();
+                            break;
+                        }
+                         case "ClarityImportance":
+                        {
+                            criteriaAll = subteachQuery.Select(c => c.Criteria.ClarityImportance).ToList();
+                            break;
+                        }
+                    case "Ratio":
+                        {
+                            criteriaAll = subteachQuery.Select(c => c.Criteria.Ratio).ToList();
+                            break;
+                        }
+                    case "Insistence":
+                        {
+                            criteriaAll = subteachQuery.Select(c => c.Criteria.Insistence).ToList();
+                            break;
+                        }
+                             
+                    case "Visit":
+                        {
+                            criteriaAll = subteachQuery.Select(c => c.Criteria.Visit).ToList();
+                            break;
+                        }
 
-                dvm.CountTeachers = d.Teachers.Count;
-                departmentVM.Add(dvm);
+                }
+                
+
             }
-            ViewBag.Departments = departmentVM;
-            return View();
-        }*/
+            foreach (var crAll in criteriaAll)
+            {
+                criterias = crAll.Split(new Char[] { ' ' });
+                for (int i = 0; i < criterias.Length; i++)
+                {
+                    switch (Int32.Parse(criterias[i]))
+                    {
+                        case 1:
+                            {
+                                voices[0]++;
+                                break;
+                            }
+                        case 2:
+                            {
+                                voices[1]++;
+                                break;
+                            }
+                        case 3:
+                            {
+                                voices[2]++;
+                                break;
+                            }
+                        case 4:
+                            {
+                                voices[3]++;
+                                break;
+                            }
+                        case 5:
+                            {
+                                voices[4]++;
+                                break;
+                            }
+                    }
+                    countVoices++;
 
+                }
+            }
+            tpVM.CountVoices = countVoices;
+             tpVM.voices = voices;
+
+
+             return Json(tpVM, JsonRequestBehavior.AllowGet);
+        }
         //Получаем преподавателей по кафедре и странице
         public ActionResult Teachers(int? id,int? page)
         {   var context=new DataContext();

@@ -1,34 +1,46 @@
-﻿var salesData = [
- { label: "Basic", color: "#3366CC" },
- { label: "Plus", color: "#DC3912" },
- { label: "Lite", color: "#FF9900" },
- { label: "Elite", color: "#109618" },
- { label: "Delux", color: "#990099" }
-];
+﻿
+    var salesData = [
+ { label: "voice1", color: "#3366CC" },
+ { label: "voice2", color: "#DC3912" },
+ { label: "voice3", color: "#FF9900" },
+ { label: "voice4", color: "#109618" },
+ { label: "voice5", color: "#990099" }
+    ];
 
-//var svg = d3.select("#firstTab").append("svg").attr("width",700).attr("height",300);
-var svg = d3.select("#TabSvg").append("svg").attr("viewBox", "150 0 600 350");
+    //var svg = d3.select("#firstTab").append("svg").attr("width",700).attr("height",300);
+    var svg = d3.select("#TabSvg").append("svg").attr("viewBox", "150 0 600 350");
 
-svg.append("g").attr("id", "quotesDonut");
+    svg.append("g").attr("id", "quotesDonut");
 
 
-Donut3D.draw("quotesDonut", randomData(), 450, 150, 130, 100, 30, 0);
+    Donut3D.draw("quotesDonut", initData(), 450, 150, 130, 100, 30, 0);
+    var str = "Всього голосів: " + $("#CountVoices").text();
+    $("#firstVoices").append(str);
 
 function changeData() {
-    Donut3D.transition("quotesDonut", randomData(), 130, 100, 30, 0);
+    Donut3D.transition("quotesDonut", AjaxData(), 130, 100, 30, 0);
 }
 
-function randomData() {
+function initData() {
     return salesData.map(function (d) {
-        return { label: d.label, value: 1000 * Math.random(), color: d.color };
+        var str = "#" + d.label;
+        return{label:d.label,value:+$(str).text(),color:d.color}
+    })
+}
+
+
+function AjaxData(values) {
+    return salesData.map(function (d) {
+        return { label: d.label, value: seles, color: d.color };
     });
 }
-$(function () {
-    $("ul li").bind('click', function () {
 
-        $(".voices").text("Всього голосів: " + Math.ceil((Math.random() * 40)));
-        changeData();
-        preventDefault();
-
-    })
-});
+function OnSuccess(data)
+{
+    var results = salesData.map(function (d,i) {
+        return { label: d.label, value: data.voices[i], color: d.color };
+    });
+    Donut3D.transition("quotesDonut", results, 130, 100, 30, 0);
+    var str = "Всього голосів: " + data.CountVoices;
+    $("#firstVoices").empty().append(str);
+}

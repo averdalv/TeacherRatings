@@ -6,20 +6,20 @@
 @{
     Layout = "~/Views/Shared/CommonTeacherPage.cshtml";
 }
-    <div>
+<div>
     @using (Html.BeginForm())
     {
-        
-       <div class="funkyradio">
 
-           @foreach (var sub in ViewBag.Subjects)
+        <div class="funkyradio">
+
+            @foreach (var sub in ViewBag.Subjects)
             {
 
-            <div class="funkyradio-primary">
-                <input type="radio" name="SubjectId" id="radio(@sub.SubjectId)" value="@sub.SubjectId" />
-                <label for="radio(@sub.SubjectId)">@sub.Name</label>
-            </div>
-            
+                <div class="funkyradio-primary">
+                    <input type="radio" name="SubjectId" id="radio(@sub.SubjectId)" value="@sub.SubjectId" />
+                    <label for="radio(@sub.SubjectId)">@sub.Name</label>
+                </div>
+
             }
         </div>
 
@@ -29,37 +29,37 @@
 
             @foreach (var cr in ViewBag.Criterias)
             {
-            <h3>@cr</h3>
-            <div class="funkyradio">
-                <div class="funkyradio-danger">
-                    <input type="radio" name="Criterias[@i]" id="radio1(@i)" value="1" />
-                    <label for="radio1(@i)">1</label>
+                <h3>@cr</h3>
+                <div class="funkyradio">
+                    <div class="funkyradio-danger">
+                        <input type="radio" name="Criterias[@i]" id="radio1(@i)" value="1" />
+                        <label for="radio1(@i)">1</label>
+                    </div>
+                    <div class="funkyradio-warning">
+                        <input type="radio" name="Criterias[@i]" id="radio2(@i)" value="2" />
+                        <label for="radio2(@i)">2</label>
+                    </div>
+                    <div class="funkyradio-default">
+                        <input type="radio" name="Criterias[@i]" id="radio3(@i)" value="3" checked />
+                        <label for="radio3(@i)">3</label>
+                    </div>
+                    <div class="funkyradio-primary">
+                        <input type="radio" name="Criterias[@i]" id="radio4(@i)" value="4" />
+                        <label for="radio4(@i)">4</label>
+                    </div>
+                    <div class="funkyradio-success">
+                        <input type="radio" name="Criterias[@i]" id="radio5(@i)" value="5" />
+                        <label for="radio5(@i)">5</label>
+                    </div>
                 </div>
-                <div class="funkyradio-warning">
-                    <input type="radio" name="Criterias[@i]" id="radio2(@i)" value="2" />
-                    <label for="radio2(@i)">2</label>
-                </div>
-                <div class="funkyradio-default">
-                    <input type="radio" name="Criterias[@i]" id="radio3(@i)" value="3" checked />
-                    <label for="radio3(@i)">3</label>
-                </div>
-                <div class="funkyradio-primary">
-                    <input type="radio" name="Criterias[@i]" id="radio4(@i)" value="4" />
-                    <label for="radio4(@i)">4</label>
-                </div>
-                <div class="funkyradio-success">
-                    <input type="radio" name="Criterias[@i]" id="radio5(@i)" value="5" />
-                    <label for="radio5(@i)">5</label>
-                </div>
-            </div>
-            <br>
+                <br>
                 { i++; }
 
             }
         </div>
 
 
-       <input type="submit" value="Добавить" />
+        <input type="submit" class="btn btn-primary" value="Додать" />
     }
-              </div>
-                 
+</div>
+
