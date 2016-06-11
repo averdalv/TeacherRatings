@@ -153,7 +153,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="HelperClasses\CriteriaReturn.cs" />
+    <Compile Include="ViewModels\CriteriaReturnViewModel.cs" />
     <Compile Include="Math\Statistics.cs" />
     <Compile Include="Migrations\201605190159198_Init.cs" />
     <Compile Include="Migrations\201605190159198_Init.Designer.cs">
@@ -306,6 +306,7 @@
     <Content Include="Views\Teacher\TeachersPartial.cshtml" />
     <Content Include="Views\Teacher\Search.cshtml" />
     <Content Include="Views\Teacher\PartialSearch.cshtml" />
+    <Content Include="Views\Teacher\ValueErrorPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605190159198_Init.resx">

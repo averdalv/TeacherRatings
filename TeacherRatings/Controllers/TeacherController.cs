@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using TeacherRatings.Models;
 using TeacherRatings.Math;
-using TeacherRatings.HelperClasses;
 using TeacherRatings.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -48,6 +47,10 @@ namespace TeacherRatings.Controllers
             return "DYAKUYU";
         }
 
+        public ActionResult ValueErrorPartial()
+        {
+            return PartialView();
+        }
        
         [HttpGet]
         [Authorize]
@@ -65,57 +68,85 @@ namespace TeacherRatings.Controllers
                              where c.Email == HttpContext.User.Identity.Name
                              select c.Id).First();
 
-           // List<int> idSubjectsAlreadyValuedForThisUser = new List<int>();
-           // idSubjectsAlreadyValuedForThisUser.AddRange((
-            //    from c in context.
-            // //   ))
+            List<int> idSubjectsAlreadyValuedForThisUser = new List<int>();
+            idSubjectsAlreadyValuedForThisUser.AddRange((
+                from c in context.TeacherUsers
+                where (c.TeacherId == teacherId && c.UserId == UserId)
+                select c.SubjectId
+            ).ToList());
 
             ViewBag.Criterias = new List<string>();
             List<int> subjId = (from c in context.TeacherSubjects
                                 where c.TeacherId == teacherId
                                 select c.SubjectId).ToList();
             List<Subject> Sub = new List<Subject>();
-            Sub.AddRange((from c in context.Subjects
-                          where subjId.Contains(c.SubjectId)
-                          select c).ToList());
-            ViewBag.Subjects = Sub;
-
-            foreach(var criteria in context.CriteriaStrings)
+            Sub.AddRange((
+                from c in context.Subjects
+                where (subjId.Contains(c.SubjectId) && !idSubjectsAlreadyValuedForThisUser.Contains(c.SubjectId))
+                select c
+            ).ToList());
+            ViewBag.SubjectsValue = Sub;
+            ViewBag.Subjects = (from c in context.Subjects
+                                where subjId.Contains(c.SubjectId)
+                                select c).ToList();
+            if (!Sub.Any())
             {
-                ViewBag.Criterias.Add(criteria.CriteriaText);
+                return PartialView("ValueErrorPartial");
             }
+            else
+            {
+                
+                foreach (var criteria in context.CriteriaStrings)
+                {
+                    ViewBag.Criterias.Add(criteria.CriteriaText);
+                }
 
-            CriteriaReturn crRet = new CriteriaReturn();
-            crRet.TeacherId = teacherId.ToString(); 
-            crRet.UserId = UserId;
-            return View(crRet);
+                CriteriaReturnViewModel crRet = new CriteriaReturnViewModel();
+                crRet.TeacherId = teacherId.ToString();
+                crRet.UserId = UserId;
+                return View(crRet);
+            }
+            
         }
 
         [HttpPost]
-        public ActionResult Value(CriteriaReturn crRet)
+        public ActionResult Value(CriteriaReturnViewModel crRet)
         {
             Statistics stat = new Statistics();
             stat.Update(crRet);
-            var context=new DataContext();
-            ViewBag.Teacher = context.Teachers.Where(t => t.TeacherId.ToString() == crRet.TeacherId).First();
-            var dep = context.Teachers.Where(p => p.TeacherId.ToString() == crRet.TeacherId).Select(p => p.Department.Name).First();
-            ViewBag.Department = dep;
-            var teacher=context.Teachers.Where(t=>t.TeacherId.ToString()==crRet.TeacherId).First();
-            List<Subject> Sub = new List<Subject>();
-            List<int> subjId = (from c in context.TeacherSubjects
-                                where c.TeacherId.ToString() == crRet.TeacherId
-                                select c.SubjectId).ToList();
-            Sub.AddRange((from c in context.Subjects
-                          where subjId.Contains(c.SubjectId)
-                          select c).ToList());
-            ViewBag.Subjects = Sub;
-            ViewBag.Criterias = new List<string>();
-            foreach (var criteria in context.CriteriaStrings)
-            {
-                ViewBag.Criterias.Add(criteria.CriteriaText);
-            }
-            ViewBag.Message = "Оцінки викладачу " + teacher.Name + " " + teacher.LastName + " додано!";
-            return View(crRet);
+            var context = new DataContext();
+            string UserId = (from c in context.Users
+                             where c.Email == HttpContext.User.Identity.Name
+                             select c.Id).First();
+            Evaluation ev = new Evaluation();
+            ev.Interest = int.Parse(crRet.Criterias[0]);
+            ev.Accessibility = int.Parse(crRet.Criterias[1]);
+            ev.ObjectivityAssessment = int.Parse(crRet.Criterias[2]);
+            ev.Preparedness = int.Parse(crRet.Criterias[3]);
+            ev.ClarityImportance = int.Parse(crRet.Criterias[4]);
+            ev.Ratio = int.Parse(crRet.Criterias[5]);
+            ev.Interest = int.Parse(crRet.Criterias[6]);
+            ev.Visit = int.Parse(crRet.Criterias[7]);
+            context.Evaluations.Add(ev);
+            context.SaveChanges();
+            TeacherUser tu = new TeacherUser();
+            tu.User = (from c in context.Users
+                       where c.Id == UserId
+                       select c).First();
+            tu.UserId = UserId;
+            tu.Subject = (from c in context.Subjects
+                          where c.SubjectId.ToString() == crRet.SubjectId
+                          select c).First();
+            tu.SubjectId = int.Parse(crRet.SubjectId);
+            tu.Teacher = (from c in context.Teachers
+                          where c.TeacherId.ToString() == crRet.TeacherId
+                          select c).First();
+            tu.TeacherId = int.Parse(crRet.TeacherId);
+            tu.Evaluation = ev;
+            context.TeacherUsers.Add(tu);
+            context.SaveChanges();
+
+            return RedirectToAction("TeacherPage", "Teacher", new { id = crRet.TeacherId });
         }
        
         public ActionResult TeacherPage(int id)

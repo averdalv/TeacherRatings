@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace TeacherRatings.HelperClasses
+namespace TeacherRatings.ViewModels
 {
-    public class CriteriaReturn
+    public class CriteriaReturnViewModel
     {
-        public CriteriaReturn()
+        public CriteriaReturnViewModel()
         {
             Criterias = new List<string>();
             for (int i = 0; i < 8; ++i) Criterias.Add(string.Empty);

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TeacherRatings.Models;
-using TeacherRatings.HelperClasses;
+using TeacherRatings.ViewModels;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
 
@@ -12,7 +12,7 @@ namespace TeacherRatings.Math
 {
     public class Statistics
     {
-        public void Update(CriteriaReturn crRet)
+        public void Update(CriteriaReturnViewModel crRet)
         {
             var context = new DataContext();
             int teacherId = int.Parse(crRet.TeacherId);

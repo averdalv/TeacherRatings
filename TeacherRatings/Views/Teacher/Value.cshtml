@@ -1,6 +1,7 @@
 ﻿@using TeacherRatings.Models;
 @using System.Collections;
-@model TeacherRatings.HelperClasses.CriteriaReturn
+@using TeacherRatings.ViewModels;
+@model CriteriaReturnViewModel
 
 <link href="@Url.Content("~/Content/RadioValue.css")" rel="stylesheet" type="text/css" />
 @{
@@ -14,7 +15,7 @@
         <input type="hidden" name="TeacherId" value="@Model.TeacherId">
         <div class="funkyradio">
             <h2>Предмети</h2>
-            @foreach (var sub in ViewBag.Subjects)
+            @foreach (var sub in ViewBag.SubjectsValue)
             {
 
                 <div class="funkyradio-primary" id="subjects">
